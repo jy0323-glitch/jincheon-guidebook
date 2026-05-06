@@ -271,7 +271,7 @@ box-shadow:0 4px 14px rgba(60,52,137,.06);position:relative;}
     <div class="calc-item"><label>제2외국어/한문</label><input type="number" id="cc-lang" value="0" min="0" max="20" oninput="calcAll()"></div>
     <div class="calc-item"><label>교양</label><input type="number" id="cc-edu" value="0" min="0" max="10" oninput="calcAll()"></div>
     <div class="calc-item"><label>창의적 체험활동</label><input type="number" id="cc-act" value="0" min="0" max="18" oninput="calcAll()"></div>
-    <div class="calc-item"><label>자동 합산 선택과목</label><input type="number" id="cc-etc" value="0" min="0" max="60" readonly></div>
+    <div class="calc-item"><label>자동 합산 선택과목</label><input type="number" id="cc-etc" value="13" min="0" max="80" readonly></div>
   </div>
   <div class="calc-result">
     <div class="calc-metric"><div class="num" id="cr-total">0</div><div class="lbl">총 이수 학점</div></div>
@@ -434,6 +434,46 @@ function calcAll(){
     document.getElementById('cr-bar').style.background='#3C3489';
   }
 }
+const REQUIRED_CREDITS = 14;
+
+const groupRules = [
+  {
+    name: '1학기 국어수학영어',
+    selector: '#s1 .group-box:nth-of-type(1) .card',
+    max: 1
+  },
+  {
+    name: '1학기 사회과학',
+    selector: '#s1 .group-box:nth-of-type(2) .card',
+    max: 3
+  },
+  {
+    name: '1학기 기가정보외국어한문',
+    selector: '#s1 .group-box:nth-of-type(3) .card',
+    max: 1
+  },
+  {
+    name: '2학기 국어수학영어',
+    selector: '#s2 .group-box:nth-of-type(1) .card',
+    max: 3
+  },
+  {
+    name: '2학기 사회과학',
+    selector: '#s2 .group-box:nth-of-type(2) .card',
+    max: 3
+  },
+  {
+    name: '2학기 음악미술',
+    selector: '#s2 .group-box:nth-of-type(3) .card',
+    max: 1
+  },
+  {
+    name: '2학기 교양',
+    selector: '#s2 .group-box:nth-of-type(4) .card',
+    max: 1
+  }
+];
+
 const selectedSubjectsMap = new Map();
 
 function getCreditFromCard(card){
@@ -443,66 +483,79 @@ function getCreditFromCard(card){
   return m ? parseInt(m[1], 10) : 0;
 }
 
-function isSelectableStudentCard(card){
-  return card.closest('.cards') && !card.closest('.designated-grid');
+function getTitleFromCard(card){
+  const h4 = card.querySelector('h4');
+  return h4 ? h4.textContent.trim() : '';
+}
+
+function getGroupRule(card){
+  return groupRules.find(rule => card.matches(rule.selector));
+}
+
+function getSelectedCountInGroup(rule){
+  return Array.from(document.querySelectorAll(rule.selector))
+    .filter(card => card.classList.contains('selected-subject-card'))
+    .length;
 }
 
 function renderSelectedSubjects(){
   const body = document.getElementById('selected-list-body');
-
   if(!body) return;
 
   const arr = Array.from(selectedSubjectsMap.values());
 
   if(arr.length === 0){
-    body.textContent = '아직 선택한 과목이 없습니다.';
+    body.textContent = `학교 지정과목 ${REQUIRED_CREDITS}학점은 자동 포함됩니다.`;
     return;
   }
 
-  body.innerHTML = arr
-    .map(v => `<div class="selected-list-item">${v.title} · ${v.credit}학점</div>`)
-    .join('');
+  body.innerHTML =
+    `<div class="selected-list-item">학교 지정과목 · ${REQUIRED_CREDITS}학점</div>` +
+    arr.map(v => `<div class="selected-list-item">${v.title} · ${v.credit}학점</div>`).join('');
 }
 
 function updateAutoCredits(){
-  const total = Array.from(selectedSubjectsMap.values())
+  const selectedTotal = Array.from(selectedSubjectsMap.values())
     .reduce((sum,v)=>sum+v.credit,0);
 
-  const etc = document.getElementById('cc-etc');
+  const total = REQUIRED_CREDITS + selectedTotal;
 
+  const etc = document.getElementById('cc-etc');
   if(etc) etc.value = total;
 
   renderSelectedSubjects();
-
   calcAll();
 }
 
 document.addEventListener('click', function(e){
-
   const card = e.target.closest('.card');
+  if(!card) return;
 
-  if(!card || !isSelectableStudentCard(card)) return;
+  const rule = getGroupRule(card);
+  if(!rule) return;
 
-  const titleEl = card.querySelector('h4');
-
-  if(!titleEl) return;
-
-  const title = titleEl.textContent.trim();
-
+  const title = getTitleFromCard(card);
   const credit = getCreditFromCard(card);
-
-  if(!credit) return;
+  if(!title || !credit) return;
 
   if(selectedSubjectsMap.has(title)){
     selectedSubjectsMap.delete(title);
     card.classList.remove('selected-subject-card');
-  }else{
-    selectedSubjectsMap.set(title, {title, credit});
-    card.classList.add('selected-subject-card');
+    updateAutoCredits();
+    return;
   }
 
-  updateAutoCredits();
+  const selectedCount = getSelectedCountInGroup(rule);
 
+  if(selectedCount >= rule.max){
+    alert(`${rule.name} 영역은 최대 ${rule.max}과목만 선택할 수 있습니다.`);
+    return;
+  }
+
+  selectedSubjectsMap.set(title, {title, credit});
+  card.classList.add('selected-subject-card');
+
+  updateAutoCredits();
 }, true);
 
 window.addEventListener('DOMContentLoaded', updateAutoCredits);
