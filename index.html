@@ -34,6 +34,9 @@
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
 .card{border-radius:var(--border-radius-lg);padding:0.75rem 1rem;cursor:pointer;transition:opacity 0.15s;border:0.5px solid transparent}
 .card:hover{opacity:0.82}
+  .disabled-subject-card:hover{
+  opacity:.35 !important;
+}
 .card h4{font-size:13px;font-weight:500;margin-bottom:2px}
 .card p{font-size:12px;opacity:0.75}
 .type-tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:20px;display:inline-block;margin-bottom:5px}
@@ -575,7 +578,7 @@ function refreshDisabledCards(){
 }
 
 document.addEventListener('click', function(e){
-  const card = e.target.closest('.card');
+  const card = e.target.closest('.cards .card');
   if(!card) return;
 
   const rule = getGroupRule(card);
