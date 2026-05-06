@@ -321,6 +321,7 @@ function showSem(id,el){
 }
 
 function openModal(title, meta, evalType, desc, prereqs){
+  document.getElementById('modal').classList.remove('open');
   document.getElementById('modal-title').textContent = title;
   document.getElementById('modal-meta').innerHTML = meta.split(' · ').map(m=>
     `<span style="background:var(--color-background-secondary);padding:2px 8px;border-radius:20px;font-size:11px">${m}</span>`
@@ -503,7 +504,11 @@ document.addEventListener('click', function(e){
 }, true);
 
 window.addEventListener('DOMContentLoaded', updateAutoCredits);
-  
+document.getElementById('modal').addEventListener('click', function(e){
+  if(e.target.id === 'modal'){
+    closeModal();
+  }
+});  
 </script>
 </body>
 </html>
