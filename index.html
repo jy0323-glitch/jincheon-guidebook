@@ -690,8 +690,17 @@ document.getElementById('cart-btn').addEventListener('click', function(){
   refreshDisabledCards();
   updateCartButton();
   closeModal();
-});
 
+  showMain('calc', document.querySelectorAll('.nav-tab')[1]);
+
+  setTimeout(()=>{
+    document.getElementById('main-calc').scrollIntoView({
+      behavior:'smooth',
+      block:'start'
+    });
+  }, 100);
+});
+  
 document.getElementById('modal').addEventListener('click', function(e){
   if(e.target.id === 'modal'){
     closeModal();
@@ -701,6 +710,12 @@ document.getElementById('modal').addEventListener('click', function(e){
 window.addEventListener('DOMContentLoaded', ()=>{
   updateAutoCredits();
   refreshDisabledCards();
+});
+window.addEventListener('DOMContentLoaded', ()=>{
+  const cartBtn = document.getElementById('cart-btn');
+  if(cartBtn){
+    cartBtn.textContent = '장바구니에 담기';
+  }
 });
 </script>
 </body>
