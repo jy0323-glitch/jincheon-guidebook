@@ -102,7 +102,7 @@ box-shadow:0 4px 14px rgba(60,52,137,.06);position:relative;}
   position:relative;
 }
 .selected-subject-card::after{
-  content:"선택";
+  content:"담김";
   position:absolute;
   right:8px;
   top:8px;
@@ -135,6 +135,17 @@ box-shadow:0 4px 14px rgba(60,52,137,.06);position:relative;}
   font-size:12px;
   color:var(--color-text-secondary);
   padding:4px 0;
+}
+.cart-hint{
+  background:#F6F4FF;
+  border:1px solid #D9D5FF;
+  border-radius:16px;
+  padding:12px 14px;
+  margin:0 0 1rem;
+  font-size:13px;
+  color:#3C3489;
+  line-height:1.6;
+  font-weight:600;
 }
 </style>
 </head>
@@ -274,8 +285,11 @@ box-shadow:0 4px 14px rgba(60,52,137,.06);position:relative;}
     <i class="ti ti-info-circle" aria-hidden="true" style="color:#3C3489;margin-right:6px"></i>
     3학년 전체 이수 학점을 입력하면 졸업 요건(192학점) 충족 여부를 확인할 수 있어요.
 </div>
+  <div class="cart-hint">
+  과목 카드를 누르면 내 수강 장바구니에 담깁니다. 다시 누르면 장바구니에서 빠집니다.
+</div>
 <div class="selected-list">
-  <div class="selected-list-title">내가 선택한 과목</div>
+  <div class="selected-list-title">내 수강 장바구니</div>
   <div id="selected-list-body" class="selected-list-item">아직 선택한 과목이 없습니다.</div>
 </div>
   <div class="calc-grid">
@@ -537,7 +551,7 @@ function renderSelectedSubjects(){
   const arr = Array.from(selectedSubjectsMap.values());
 
   if(arr.length === 0){
-    body.textContent = `학교 지정과목 ${REQUIRED_CREDITS}학점은 자동 포함됩니다.`;
+    body.textContent = `학교 지정과목 ${REQUIRED_CREDITS}학점은 장바구니에 자동 포함됩니다.`;
     return;
   }
 
