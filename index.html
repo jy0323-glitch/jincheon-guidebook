@@ -449,16 +449,6 @@ function openModal(title, meta, evalType, desc, prereqs){
         <div class="prereq-none">별도의 선이수 필수·권장 과목이 없습니다. 누구든지 수강할 수 있어요!</div>
       </div>`;
   }
-  const key = getCardKey(clickedCard);
-const cartBtn = document.getElementById('cart-btn');
-
-if(selectedSubjectsMap.has(key)){
-  cartBtn.textContent = '장바구니에서 제거';
-  cartBtn.classList.add('remove');
-}else{
-  cartBtn.textContent = '장바구니에 담기';
-  cartBtn.classList.remove('remove');
-}
 const cartBtn = document.getElementById('cart-btn');
 
 if(currentModalCard && cartBtn){
