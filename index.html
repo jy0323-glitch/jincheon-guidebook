@@ -75,6 +75,40 @@
 .progress-bar-bg{background:var(--color-border-tertiary);border-radius:20px;height:10px;overflow:hidden;margin:8px 0 4px}
 .progress-bar-fill{height:100%;border-radius:20px;background:#3C3489;transition:width 0.4s}
 .progress-label{display:flex;justify-content:space-between;font-size:12px;color:var(--color-text-secondary)}
+.selected-subject-card{
+  outline:2px solid #3C3489 !important;
+  box-shadow:0 0 0 4px rgba(60,52,137,.12) !important;
+  position:relative;
+}
+.selected-subject-card::after{
+  content:"선택";
+  position:absolute;
+  right:8px;
+  top:8px;
+  background:#3C3489;
+  color:#fff;
+  border-radius:999px;
+  padding:2px 7px;
+  font-size:10px;
+  font-weight:700;
+}
+.selected-list{
+  background:var(--color-background-secondary);
+  border-radius:var(--border-radius-md);
+  padding:0.875rem;
+  margin:0 0 1rem;
+}
+.selected-list-title{
+  font-size:12px;
+  font-weight:700;
+  color:#3C3489;
+  margin-bottom:0.5rem;
+}
+.selected-list-item{
+  font-size:12px;
+  color:var(--color-text-secondary);
+  padding:4px 0;
+}
 </style>
 
 <h2 class="sr-only">진천고등학교 3학년(2027) 고교학점제 이수 가이드북</h2>
@@ -210,7 +244,12 @@
   <div style="font-size:14px;color:var(--color-text-secondary);margin-bottom:1.25rem;line-height:1.7;background:var(--color-background-secondary);padding:0.875rem;border-radius:var(--border-radius-md)">
     <i class="ti ti-info-circle" aria-hidden="true" style="color:#3C3489;margin-right:6px"></i>
     3학년 전체 이수 학점을 입력하면 졸업 요건(192학점) 충족 여부를 확인할 수 있어요.
-  </div>
+</div>
+<div class="selected-list">
+  <div class="selected-list-title">내가 선택한 과목</div>
+  <div id="selected-list-body" class="selected-list-item">아직 선택한 과목이 없습니다.</div>
+</div>
+</div>
   <div class="calc-grid">
     <div class="calc-item"><label>국어</label><input type="number" id="cc-kor" value="0" min="0" max="30" oninput="calcAll()"></div>
     <div class="calc-item"><label>수학</label><input type="number" id="cc-math" value="0" min="0" max="30" oninput="calcAll()"></div>
@@ -223,7 +262,7 @@
     <div class="calc-item"><label>제2외국어/한문</label><input type="number" id="cc-lang" value="0" min="0" max="20" oninput="calcAll()"></div>
     <div class="calc-item"><label>교양</label><input type="number" id="cc-edu" value="0" min="0" max="10" oninput="calcAll()"></div>
     <div class="calc-item"><label>창의적 체험활동</label><input type="number" id="cc-act" value="0" min="0" max="18" oninput="calcAll()"></div>
-    <div class="calc-item"><label>기타 선택과목</label><input type="number" id="cc-etc" value="0" min="0" max="60" oninput="calcAll()"></div>
+    <div class="calc-item"><label>자동 합산 선택과목</label><input type="number" id="cc-etc" value="0" min="0" max="60" readonly></div>
   </div>
   <div class="calc-result">
     <div class="calc-metric"><div class="num" id="cr-total">0</div><div class="lbl">총 이수 학점</div></div>
@@ -385,4 +424,76 @@ function calcAll(){
     document.getElementById('cr-bar').style.background='#3C3489';
   }
 }
+const selectedSubjectsMap = new Map();
+
+function getCreditFromCard(card){
+  const p = card.querySelector('p');
+  if(!p) return 0;
+  const m = p.textContent.match(/(\\d+)\\s*학점/);
+  return m ? parseInt(m[1], 10) : 0;
+}
+
+function isSelectableStudentCard(card){
+  return card.closest('.cards') && !card.closest('.designated-grid');
+}
+
+function renderSelectedSubjects(){
+  const body = document.getElementById('selected-list-body');
+
+  if(!body) return;
+
+  const arr = Array.from(selectedSubjectsMap.values());
+
+  if(arr.length === 0){
+    body.textContent = '아직 선택한 과목이 없습니다.';
+    return;
+  }
+
+  body.innerHTML = arr
+    .map(v => `<div class="selected-list-item">${v.title} · ${v.credit}학점</div>`)
+    .join('');
+}
+
+function updateAutoCredits(){
+  const total = Array.from(selectedSubjectsMap.values())
+    .reduce((sum,v)=>sum+v.credit,0);
+
+  const etc = document.getElementById('cc-etc');
+
+  if(etc) etc.value = total;
+
+  renderSelectedSubjects();
+
+  calcAll();
+}
+
+document.addEventListener('click', function(e){
+
+  const card = e.target.closest('.card');
+
+  if(!card || !isSelectableStudentCard(card)) return;
+
+  const titleEl = card.querySelector('h4');
+
+  if(!titleEl) return;
+
+  const title = titleEl.textContent.trim();
+
+  const credit = getCreditFromCard(card);
+
+  if(!credit) return;
+
+  if(selectedSubjectsMap.has(title)){
+    selectedSubjectsMap.delete(title);
+    card.classList.remove('selected-subject-card');
+  }else{
+    selectedSubjectsMap.set(title, {title, credit});
+    card.classList.add('selected-subject-card');
+  }
+
+  updateAutoCredits();
+
+}, true);
+
+window.addEventListener('DOMContentLoaded', updateAutoCredits);
 </script>
