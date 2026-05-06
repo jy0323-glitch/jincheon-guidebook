@@ -60,10 +60,12 @@
   .badge-pick3{background:#FAEEDA;color:#633806}
   .badge-pick1-purple{background:#EEEDFE;color:#3C3489}
   .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
-  .card{border-radius:var(--border-radius-lg);padding:0.875rem 1rem;cursor:pointer;transition:opacity 0.15s;border:1px solid transparent}
+  .card{border-radius:var(--border-radius-lg);padding:0.875rem 1rem;cursor:pointer;transition:all 0.2s ease;border:1px solid transparent}
   .card:hover{opacity:0.82}
-  .disabled-subject-card:hover{
-    opacity:.35 !important;
+  .disabled-subject-card{
+    opacity:.35;
+    pointer-events:none; /* 클릭 완벽 차단 */
+    filter:grayscale(.2);
   }
   .card h4{font-size:14px;font-weight:700;margin-bottom:4px;word-break:keep-all;}
   .card p{font-size:12px;opacity:0.85;font-weight:500;}
@@ -110,15 +112,15 @@
   .prereq-item-sub{font-size:12px;color:var(--color-text-secondary);margin-top:4px}
   .prereq-none{font-size:13px;color:var(--color-text-secondary);line-height:1.6;}
   
-  .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1.5rem}
+  .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem}
   .calc-item{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:0.875rem}
-  .calc-item label{font-size:13px;font-weight:500;color:var(--color-text-secondary);display:block;margin-bottom:6px}
-  .calc-item input{width:100%;padding:8px;font-size:15px;font-weight:700;border:1px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary);text-align:center}
+  .calc-item label{font-size:12px;font-weight:700;color:var(--color-text-secondary);display:block;margin-bottom:6px}
+  .calc-item input{width:100%;padding:8px;font-size:16px;font-weight:700;border:1px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary);text-align:center}
   
   .calc-result{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:1.5rem}
   .calc-metric{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem;text-align:center}
   .calc-metric .num{font-size:24px;font-weight:700;color:var(--color-text-primary)}
-  .calc-metric .lbl{font-size:12px;font-weight:500;color:var(--color-text-secondary);margin-top:4px}
+  .calc-metric .lbl{font-size:12px;font-weight:700;color:var(--color-text-secondary);margin-top:4px}
   
   .progress-bar-wrap{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem}
   .progress-bar-bg{background:var(--color-border-tertiary);border-radius:20px;height:12px;overflow:hidden;margin:10px 0 6px}
@@ -142,10 +144,22 @@
     font-size:11px;
     font-weight:700;
   }
-  .disabled-subject-card{
-    opacity:.35;
-    pointer-events:none;
-    filter:grayscale(.2);
+  .fixed-subject-card{
+    outline:2px solid #534AB7 !important;
+    box-shadow:0 0 0 4px rgba(83,74,183,.12) !important;
+    position:relative;
+  }
+  .fixed-subject-card::after{
+    content:"필수";
+    position:absolute;
+    right:10px;
+    top:10px;
+    background:#534AB7;
+    color:#fff;
+    border-radius:999px;
+    padding:3px 8px;
+    font-size:11px;
+    font-weight:700;
   }
   .selected-list{
     background:var(--color-background-secondary);
@@ -220,7 +234,7 @@
 
     <div class="nav-tabs">
       <div class="nav-tab active" onclick="showMain('subjects',this)"><i class="ti ti-book-2" aria-hidden="true" style="margin-right:4px"></i>과목 탐색</div>
-      <div class="nav-tab" onclick="showMain('calc',this)"><i class="ti ti-calculator" aria-hidden="true" style="margin-right:4px"></i>학점 계산기</div>
+      <div class="nav-tab" onclick="showMain('calc',this)"><i class="ti ti-calculator" aria-hidden="true" style="margin-right:4px"></i>3학년 학점 계산기</div>
     </div>
 
     <!-- 과목 탐색 -->
@@ -234,15 +248,16 @@
       <div id="s1" class="sem-page active">
         <div class="section-label">학교 지정과목 (기본 이수)</div>
         <div class="designated-grid">
-          <div class="card c-kor" onclick="openModal('화법과 언어','국어 · 일반 · 4학점','5등급','언어 현상을 탐구하고 효과적인 말하기·듣기 능력을 기르는 과목입니다.',[])"><div class="type-tag">일반</div><h4>화법과 언어</h4><p>국어 · 4학점</p></div>
-          <div class="card c-math" onclick="openModal('확률과 통계','수학 · 일반 · 4학점','5등급','확률의 개념과 통계적 추론을 학습합니다.',[])"><div class="type-tag">일반</div><h4>확률과 통계</h4><p>수학 · 4학점</p></div>
-          <div class="card c-eng" onclick="openModal('영어 독해와 작문','영어 · 일반 · 4학점','5등급','다양한 영어 텍스트를 읽고 이해하며, 논리적인 영어 글쓰기 능력을 향상시킵니다.',[])"><div class="type-tag">일반</div><h4>영어 독해와 작문</h4><p>영어 · 4학점</p></div>
-          <div class="card c-pe" onclick="openModal('스포츠 문화','체육 · 진로 · 1학점','3단계','스포츠가 사회·문화에 미치는 영향을 탐구하고, 건강하고 활기찬 삶을 실천합니다.',[])"><div class="type-tag">진로</div><h4>스포츠 문화</h4><p>체육 · 1학점</p></div>
+          <div class="card c-kor fixed-subject-card" onclick="openModal('화법과 언어','국어 · 일반 · 4학점','5등급','언어 현상을 탐구하고 효과적인 말하기·듣기 능력을 기르는 과목입니다.',[], true)"><div class="type-tag">일반</div><h4>화법과 언어</h4><p>국어 · 4학점</p></div>
+          <div class="card c-math fixed-subject-card" onclick="openModal('확률과 통계','수학 · 일반 · 4학점','5등급','확률의 개념과 통계적 추론을 학습합니다.',[], true)"><div class="type-tag">일반</div><h4>확률과 통계</h4><p>수학 · 4학점</p></div>
+          <div class="card c-eng fixed-subject-card" onclick="openModal('영어 독해와 작문','영어 · 일반 · 4학점','5등급','다양한 영어 텍스트를 읽고 이해하며, 논리적인 영어 글쓰기 능력을 향상시킵니다.',[], true)"><div class="type-tag">일반</div><h4>영어 독해와 작문</h4><p>영어 · 4학점</p></div>
+          <div class="card c-pe fixed-subject-card" onclick="openModal('스포츠 문화','체육 · 진로 · 1학점','3단계','스포츠가 사회·문화에 미치는 영향을 탐구하고, 건강하고 활기찬 삶을 실천합니다.',[], true)"><div class="type-tag">진로</div><h4>스포츠 문화</h4><p>체육 · 1학점</p></div>
         </div>
         <div class="divider"></div>
         
         <div class="section-label">학생 선택과목</div>
-        <div class="group-box">
+        <!-- 1학기 국어수학영어 그룹 (data-max="1") -->
+        <div class="group-box" data-max="1">
           <div class="group-header"><div class="group-title">국어 · 수학 · 영어</div><span class="group-badge badge-pick1">6과목 중 택1</span></div>
           <div class="cards">
             <div class="card c-kor" onclick="openModal('문학과 영상','국어 · 진로 · 3학점','5등급','문학 작품과 영상 매체를 연계하여 분석하고 감상하는 과목입니다.',[{name:'문학',type:'권장'}])"><div class="type-tag">진로</div><h4>문학과 영상</h4><p>국어 · 3학점</p></div>
@@ -254,7 +269,8 @@
           </div>
         </div>
 
-        <div class="group-box">
+        <!-- 1학기 사회과학 그룹 (data-max="3") -->
+        <div class="group-box" data-max="3">
           <div class="group-header"><div class="group-title">사회 · 과학</div><span class="group-badge badge-pick3">10과목 중 택3</span></div>
           <div class="cards">
             <div class="card c-soc" onclick="openModal('도시의 미래 탐구','사회 · 진로 · 3학점','5등급','미래 도시의 문제와 지속가능한 발전 방향을 탐구합니다.',[{name:'세계시민과 지리',type:'권장'}])"><div class="type-tag">진로</div><h4>도시의 미래 탐구</h4><p>사회 · 3학점</p></div>
@@ -270,7 +286,8 @@
           </div>
         </div>
 
-        <div class="group-box">
+        <!-- 1학기 기타 그룹 (data-max="1") -->
+        <div class="group-box" data-max="1">
           <div class="group-header"><div class="group-title">기술·가정/정보 · 제2외국어/한문</div><span class="group-badge badge-pick1">5과목 중 택1</span></div>
           <div class="cards">
             <div class="card c-tech" onclick="openModal('생활과학 탐구','기술·가정 · 진로 · 3학점','5등급','생활 속 과학 원리를 탐구하고 실생활 문제를 과학적으로 해결하는 과목입니다.',[])"><div class="type-tag">진로</div><h4>생활과학 탐구</h4><p>기술·가정 · 3학점</p></div>
@@ -286,12 +303,13 @@
       <div id="s2" class="sem-page">
         <div class="section-label">학교 지정과목 (기본 이수)</div>
         <div class="designated-grid">
-          <div class="card c-pe" onclick="openModal('스포츠 과학','체육 · 진로 · 1학점','3단계','스포츠와 과학을 융합하여 운동 능력 향상의 원리를 탐구합니다.',[])"><div class="type-tag">진로</div><h4>스포츠 과학</h4><p>체육 · 1학점</p></div>
+          <div class="card c-pe fixed-subject-card" onclick="openModal('스포츠 과학','체육 · 진로 · 1학점','3단계','스포츠와 과학을 융합하여 운동 능력 향상의 원리를 탐구합니다.',[], true)"><div class="type-tag">진로</div><h4>스포츠 과학</h4><p>체육 · 1학점</p></div>
         </div>
         <div class="divider"></div>
         
         <div class="section-label">학생 선택과목</div>
-        <div class="group-box">
+        <!-- 2학기 국어수학영어 그룹 (data-max="3") -->
+        <div class="group-box" data-max="3">
           <div class="group-header"><div class="group-title">국어 · 수학 · 영어</div><span class="group-badge badge-pick3">6과목 중 택3 · 각 4학점</span></div>
           <div class="cards">
             <div class="card c-kor" onclick="openModal('직무 의사소통','국어 · 진로 · 4학점','5등급','직무 현장에서 필요한 의사소통 능력을 기르는 과목입니다.',[])"><div class="type-tag">진로</div><h4>직무 의사소통</h4><p>국어 · 4학점</p></div>
@@ -303,7 +321,8 @@
           </div>
         </div>
 
-        <div class="group-box">
+        <!-- 2학기 사회과학 그룹 (data-max="3") -->
+        <div class="group-box" data-max="3">
           <div class="group-header"><div class="group-title">사회 · 과학</div><span class="group-badge badge-pick3">6과목 중 택3</span></div>
           <div class="cards">
             <div class="card c-soc" onclick="openModal('윤리문제 탐구','사회 · 융합 · 3학점','5등급_등급X','현대 사회의 다양한 윤리 문제를 탐구합니다.',[{name:'현대사회와 윤리',type:'권장'},{name:'윤리와 사상',type:'권장'}])"><div class="type-tag">융합</div><h4>윤리문제 탐구</h4><p>사회 · 3학점</p></div>
@@ -315,7 +334,8 @@
           </div>
         </div>
 
-        <div class="group-box">
+        <!-- 2학기 음악미술 그룹 (data-max="1") -->
+        <div class="group-box" data-max="1">
           <div class="group-header"><div class="group-title">음악 · 미술</div><span class="group-badge badge-pick1">2과목 중 택1 · 2학점</span></div>
           <div class="cards">
             <div class="card c-art" onclick="openModal('음악 연주와 창작','음악 · 진로 · 2학점','3단계','악기 연주와 음악 창작 활동을 통해 음악적 표현 능력을 기르는 과목입니다.',[])"><div class="type-tag">진로</div><h4>음악 연주와 창작</h4><p>음악 · 2학점</p></div>
@@ -323,7 +343,8 @@
           </div>
         </div>
 
-        <div class="group-box">
+        <!-- 2학기 교양 그룹 (data-max="1") -->
+        <div class="group-box" data-max="1">
           <div class="group-header"><div class="group-title">교양</div><span class="group-badge badge-pick1-purple">2과목 중 택1 · 2학점</span></div>
           <div class="cards">
             <div class="card c-edu" onclick="openModal('인간과 철학','교양 · 진로 · 2학점','PF','인간 존재와 삶의 의미를 철학적으로 탐구합니다.',[])"><div class="type-tag">진로</div><h4>인간과 철학</h4><p>교양 · 2학점</p></div>
@@ -333,45 +354,50 @@
       </div>
     </div>
 
-    <!-- 학점 계산기 -->
+    <!-- 3학년 학점 계산기 -->
     <div id="main-calc" class="main-page">
       <div style="font-size:14px;color:var(--color-text-secondary);margin-bottom:1.25rem;line-height:1.6;background:var(--color-background-secondary);padding:1rem;border-radius:var(--border-radius-md); font-weight: 500;">
         <i class="ti ti-info-circle" aria-hidden="true" style="color:#3C3489;margin-right:6px;font-size:16px;vertical-align:-2px;"></i>
-        3학년 이수 학점을 포함한 고교 전체 학점을 입력하여 졸업 요건(192학점) 충족 여부를 확인하세요.
+        3학년 목표 학점(1학기 28학점, 2학기 26학점 / 총 54학점)을 확인하세요.
       </div>
       <div class="cart-hint">
-        <i class="ti ti-shopping-cart-plus" style="margin-right:4px;"></i> 과목 카드를 누르면 내 수강 장바구니에 담깁니다.<br>담은 과목의 총 학점은 '자동 합산 선택과목'에 합산됩니다.
+        <i class="ti ti-shopping-cart-plus" style="margin-right:4px;"></i> 과목 카드를 누르면 내 수강 장바구니에 담깁니다.<br>담은 과목은 각 학기별 선택과목 영역에 자동 합산됩니다.
       </div>
       <div class="selected-list">
         <div class="selected-list-title"><i class="ti ti-checklist" style="font-size: 16px;"></i> 내 수강 장바구니 (선택과목)</div>
         <div id="selected-list-body" class="selected-list-item">아직 선택한 과목이 없습니다. 과목 탐색 탭에서 추가해보세요.</div>
       </div>
 
+      <!-- 1학기 고정 및 자동입력 영역 -->
       <div class="calc-grid">
-        <div class="calc-item"><label>국어 (지정 포함)</label><input type="number" id="cc-kor" value="24" min="0" max="30" oninput="calcAll()"></div>
-        <div class="calc-item"><label>수학 (지정 포함)</label><input type="number" id="cc-math" value="24" min="0" max="30" oninput="calcAll()"></div>
-        <div class="calc-item"><label>영어 (지정 포함)</label><input type="number" id="cc-eng" value="24" min="0" max="30" oninput="calcAll()"></div>
-        <div class="calc-item"><label>사회 (한국사 포함)</label><input type="number" id="cc-soc" value="16" min="0" max="30" oninput="calcAll()"></div>
-        <div class="calc-item"><label>과학</label><input type="number" id="cc-sci" value="12" min="0" max="30" oninput="calcAll()"></div>
-        <div class="calc-item"><label>체육 (지정 포함)</label><input type="number" id="cc-pe" value="10" min="0" max="20" oninput="calcAll()"></div>
-        <div class="calc-item"><label>예술</label><input type="number" id="cc-art" value="10" min="0" max="20" oninput="calcAll()"></div>
-        <div class="calc-item"><label>기술·가정/정보</label><input type="number" id="cc-tech" value="16" min="0" max="20" oninput="calcAll()"></div>
-        <div class="calc-item"><label>제2외국어/한문</label><input type="number" id="cc-lang" value="0" min="0" max="20" oninput="calcAll()"></div>
-        <div class="calc-item"><label>교양</label><input type="number" id="cc-edu" value="6" min="0" max="10" oninput="calcAll()"></div>
-        <div class="calc-item"><label>창의적 체험활동</label><input type="number" id="cc-act" value="18" min="0" max="18" oninput="calcAll()"></div>
-        <div class="calc-item" style="background:#EEEDFE; border:1px solid #D9D5FF;"><label style="color:#3C3489; font-weight:700;">장바구니 자동 합산</label><input type="number" id="cc-etc" value="0" min="0" max="80" readonly style="background:#F6F4FF; border:none; color:#3C3489;"></div>
+        <div class="calc-item" style="grid-column: 1 / 3;"><label>학교 지정과목 (1학기)</label><input type="number" value="13" readonly style="background:#f0f0f0; border:none; color:#66627A;"></div>
+        <div class="calc-item" style="background:#EEEDFE; border:1px solid #D9D5FF; grid-column: 1 / 3;">
+          <label style="color:#3C3489; font-weight:700;">1학기 학생 선택과목 (장바구니 합산)</label>
+          <input type="number" id="cc-opt-1" value="0" readonly style="background:#F6F4FF; border:none; color:#3C3489;">
+        </div>
       </div>
       
-      <div class="calc-result">
-        <div class="calc-metric"><div class="num" id="cr-total">0</div><div class="lbl">총 이수 학점</div></div>
-        <div class="calc-metric"><div class="num" id="cr-remain" style="color:#E24B4A">192</div><div class="lbl">잔여 학점</div></div>
-        <div class="calc-metric"><div class="num" id="cr-status" style="font-size:16px;color:#E24B4A">미달</div><div class="lbl">졸업 요건</div></div>
+      <!-- 2학기 고정 및 자동입력 영역 -->
+      <div class="calc-grid" style="margin-top: -5px;">
+        <div class="calc-item" style="grid-column: 1 / 3;"><label>학교 지정과목 (2학기)</label><input type="number" value="1" readonly style="background:#f0f0f0; border:none; color:#66627A;"></div>
+        <div class="calc-item" style="background:#EEEDFE; border:1px solid #D9D5FF; grid-column: 1 / 3;">
+          <label style="color:#3C3489; font-weight:700;">2학기 학생 선택과목 (장바구니 합산)</label>
+          <input type="number" id="cc-opt-2" value="0" readonly style="background:#F6F4FF; border:none; color:#3C3489;">
+        </div>
       </div>
       
+      <!-- 학점 결과 -->
+      <div class="calc-result" style="grid-template-columns: 1fr 1fr 1fr;">
+        <div class="calc-metric"><div class="num" id="cr-total-1">13</div><div class="lbl">1학기 총 학점</div><div id="cr-status-1" style="font-size:12px; margin-top:6px; font-weight:700;"></div></div>
+        <div class="calc-metric"><div class="num" id="cr-total-2">1</div><div class="lbl">2학기 총 학점</div><div id="cr-status-2" style="font-size:12px; margin-top:6px; font-weight:700;"></div></div>
+        <div class="calc-metric" style="background:#EEEDFE; border:1px solid #D9D5FF;"><div class="num" id="cr-total-grand" style="color:#3C3489;">14</div><div class="lbl" style="color:#3C3489;">3학년 총 학점</div><div style="font-size:12px; margin-top:6px; font-weight:700; color:#3C3489;">목표: 54학점</div></div>
+      </div>
+      
+      <!-- 진행률 바 -->
       <div class="progress-bar-wrap">
-        <div class="progress-label"><span style="font-weight:700;color:var(--color-text-primary)">이수 진행률</span><span id="cr-pct" style="font-weight: 700; color:#3C3489;">0%</span></div>
+        <div class="progress-label"><span style="font-weight:700;color:var(--color-text-primary)">3학년 이수 진행률</span><span id="cr-pct" style="font-weight: 700; color:#3C3489;">0%</span></div>
         <div class="progress-bar-bg"><div class="progress-bar-fill" id="cr-bar" style="width:0%"></div></div>
-        <div class="progress-label"><span>0학점</span><span>192학점 (졸업)</span></div>
+        <div class="progress-label"><span>0학점</span><span>54학점 (3학년 완료)</span></div>
       </div>
     </div>
 
@@ -400,9 +426,10 @@ const evalData = {
   'PF':{bg:'#EEEDFE',tc:'#3C3489',dc:'#7F77DD',vc:'#534AB7',title:'성적 처리 방식',rows:[{k:'성취도',v:'P (이수) / F (미이수)'},{k:'석차등급',v:'산출 없음'},{k:'해당 교과',v:'교양 교과 전 과목'}]}
 };
 
-// 장바구니 상태 관리
+// 장바구니 상태 관리 (학점과 학기를 함께 저장)
 let currentModalTitle = '';
-let selectedSubjectsMap = new Map(); // key: 과목명, value: 학점
+let currentModalIsDesignated = false;
+let selectedSubjectsMap = new Map(); // key: 과목명, value: { credit: 학점, semester: 학기(1 or 2) }
 
 function showMain(id, el){
   document.querySelectorAll('.main-page').forEach(p=>p.classList.remove('active'));
@@ -418,8 +445,9 @@ function showSem(id, el){
   el.classList.add('active');
 }
 
-function openModal(title, meta, evalType, desc, prereqs){
+function openModal(title, meta, evalType, desc, prereqs, isDesignated = false){
   currentModalTitle = title;
+  currentModalIsDesignated = isDesignated;
   document.getElementById('modal-title').textContent = title;
   document.getElementById('modal-meta').innerHTML = meta
     .split(' · ')
@@ -481,8 +509,16 @@ function openModal(title, meta, evalType, desc, prereqs){
 
   const cartBtn = document.getElementById('cart-btn');
   if(cartBtn){
-    updateCartButton();
-    cartBtn.onclick = toggleCart; // 클릭 시 장바구니에 담기/빼기
+    if (isDesignated) {
+      cartBtn.innerHTML = '<i class="ti ti-lock"></i> 학교 지정 필수 과목';
+      cartBtn.classList.add('remove');
+      cartBtn.style.pointerEvents = 'none';
+      cartBtn.onclick = null;
+    } else {
+      cartBtn.style.pointerEvents = 'auto';
+      updateCartButton();
+      cartBtn.onclick = toggleCart; // 클릭 시 장바구니에 담기/빼기
+    }
   }
 
   document.getElementById('modal').classList.add('open');
@@ -492,7 +528,6 @@ function updatePrereqStatus(){
   const total = window._prereqCount || 0;
   const required = window._prereqRequired || 0;
   let checked = 0;
-  let reqChecked = 0;
   for(let i=0;i<total;i++){
     const el = document.getElementById('pre_'+i);
     if(el && el.checked) checked++;
@@ -524,17 +559,23 @@ function toggleCart() {
     // 장바구니에서 빼기
     selectedSubjectsMap.delete(currentModalTitle);
   } else {
-    // 장바구니에 담기 위해 학점 정보 추출
+    // 장바구니에 담기 위해 학점과 소속 학기 정보 추출
     let credit = 0;
+    let semester = 1;
     document.querySelectorAll('.card').forEach(card => {
       const cardTitle = card.querySelector('h4').textContent;
       if (cardTitle === currentModalTitle) {
         const text = card.querySelector('p').textContent;
         const match = text.match(/(\d+)학점/);
         if (match) credit = parseInt(match[1]);
+        
+        // 카드가 s1 안에 있는지 s2 안에 있는지 검사하여 학기 판별
+        if (card.closest('#s2')) {
+          semester = 2;
+        }
       }
     });
-    selectedSubjectsMap.set(currentModalTitle, credit);
+    selectedSubjectsMap.set(currentModalTitle, { credit: credit, semester: semester });
   }
   
   updateCartButton();
@@ -558,21 +599,31 @@ function updateCartButton() {
 function updateCartUI() {
   const list = document.getElementById('selected-list-body');
   
-  // 리스트 갱신 및 총 학점 계산
   if (selectedSubjectsMap.size === 0) {
     list.innerHTML = '아직 선택한 과목이 없습니다. 과목 탐색 탭에서 추가해보세요.';
-    document.getElementById('cc-etc').value = 0;
+    document.getElementById('cc-opt-1').value = 0;
+    document.getElementById('cc-opt-2').value = 0;
   } else {
     let html = '';
-    let totalElectiveCredits = 0;
-    selectedSubjectsMap.forEach((credits, title) => {
-      html += `<div class="selected-list-item"><i class="ti ti-book" style="margin-right:4px;"></i> ${title} <span style="color:#3C3489; font-weight:700;">(${credits}학점)</span></div>`;
-      totalElectiveCredits += credits;
+    let totalElectiveCredits1 = 0;
+    let totalElectiveCredits2 = 0;
+    
+    selectedSubjectsMap.forEach((info, title) => {
+      const termStr = info.semester === 1 ? '[1학기]' : '[2학기]';
+      html += `<div class="selected-list-item"><i class="ti ti-book" style="margin-right:4px;"></i> ${termStr} ${title} <span style="color:#3C3489; font-weight:700;">(${info.credit}학점)</span></div>`;
+      
+      // 학기별 합계 계산
+      if (info.semester === 1) {
+        totalElectiveCredits1 += info.credit;
+      } else {
+        totalElectiveCredits2 += info.credit;
+      }
     });
     list.innerHTML = html;
     
-    // 계산기 '자동 합산 선택과목' 필드 업데이트
-    document.getElementById('cc-etc').value = totalElectiveCredits;
+    // 계산기 '1학기/2학기 선택과목' 필드 업데이트
+    document.getElementById('cc-opt-1').value = totalElectiveCredits1;
+    document.getElementById('cc-opt-2').value = totalElectiveCredits2;
   }
 
   // 카드에 '담김' 시각적 효과 적용
@@ -585,41 +636,84 @@ function updateCartUI() {
     }
   });
 
+  // 그룹별 선택 개수 제한에 따른 비활성화 처리 추가
+  document.querySelectorAll('.group-box').forEach(box => {
+    const maxAttr = box.getAttribute('data-max');
+    if (maxAttr) {
+      const max = parseInt(maxAttr, 10);
+      const cards = box.querySelectorAll('.card');
+      let selectedCount = 0;
+      
+      cards.forEach(card => {
+        if (card.classList.contains('selected-subject-card')) {
+          selectedCount++;
+        }
+      });
+
+      cards.forEach(card => {
+        if (selectedCount >= max) {
+          if (!card.classList.contains('selected-subject-card')) {
+            card.classList.add('disabled-subject-card');
+          }
+        } else {
+          card.classList.remove('disabled-subject-card');
+        }
+      });
+    }
+  });
+
   calcAll();
 }
 
-// 전체 학점 계산 로직 완결
+// 3학년(1, 2학기) 학점 계산 전용 로직
 function calcAll(){
-  const ids=['cc-kor','cc-math','cc-eng','cc-soc','cc-sci','cc-pe','cc-art','cc-tech','cc-lang','cc-edu','cc-act','cc-etc'];
-  let total=0;
+  // 3학년 지정과목 고정 학점 (창의적 체험활동 제외)
+  const req1 = 13; // 1학기 지정: 화법과언어(4)+확통(4)+영독작(4)+스포츠문화(1)
+  const req2 = 1;  // 2학기 지정: 스포츠과학(1)
   
-  ids.forEach(id=>{
-    total += parseInt(document.getElementById(id).value) || 0;
-  });
+  // 장바구니에서 담긴 선택과목 합산
+  const opt1 = parseInt(document.getElementById('cc-opt-1').value) || 0;
+  const opt2 = parseInt(document.getElementById('cc-opt-2').value) || 0;
   
-  const remain = Math.max(0, 192 - total);
-  const pct = Math.min(100, Math.round((total / 192) * 100));
+  // 학기별 총점 계산 (교과 기준)
+  const total1 = req1 + opt1;
+  const total2 = req2 + opt2;
+  const grandTotal = total1 + total2;
   
-  document.getElementById('cr-total').textContent = total;
-  document.getElementById('cr-remain').textContent = remain;
+  document.getElementById('cr-total-1').textContent = total1;
+  document.getElementById('cr-total-2').textContent = total2;
+  document.getElementById('cr-total-grand').textContent = grandTotal;
+  
+  // 1학기 28학점 충족 여부
+  const status1El = document.getElementById('cr-status-1');
+  if (total1 === 28) {
+    status1El.textContent = '충족 (28/28)';
+    status1El.style.color = '#1D9E75';
+  } else if (total1 > 28) {
+    status1El.textContent = `초과 (${total1}/28)`;
+    status1El.style.color = '#E24B4A';
+  } else {
+    status1El.textContent = `미달 (${total1}/28)`;
+    status1El.style.color = '#E24B4A';
+  }
+
+  // 2학기 26학점 충족 여부
+  const status2El = document.getElementById('cr-status-2');
+  if (total2 === 26) {
+    status2El.textContent = '충족 (26/26)';
+    status2El.style.color = '#1D9E75';
+  } else if (total2 > 26) {
+    status2El.textContent = `초과 (${total2}/26)`;
+    status2El.style.color = '#E24B4A';
+  } else {
+    status2El.textContent = `미달 (${total2}/26)`;
+    status2El.style.color = '#E24B4A';
+  }
+
+  // 총 54학점 진행률 표시
+  const pct = Math.min(100, Math.round((grandTotal / 54) * 100));
   document.getElementById('cr-pct').textContent = pct + '%';
   document.getElementById('cr-bar').style.width = pct + '%';
-
-  const statusEl = document.getElementById('cr-status');
-  const remainEl = document.getElementById('cr-remain');
-  const barEl = document.getElementById('cr-bar');
-  
-  if (total >= 192) {
-    statusEl.textContent = '충족 완료';
-    statusEl.style.color = '#1D9E75';
-    remainEl.style.color = '#1D9E75';
-    barEl.style.background = '#1D9E75';
-  } else {
-    statusEl.textContent = '미달 (학점 부족)';
-    statusEl.style.color = '#E24B4A';
-    remainEl.style.color = '#E24B4A';
-    barEl.style.background = '#3C3489';
-  }
 }
 
 // 페이지 로드 시 초기 계산 실행
