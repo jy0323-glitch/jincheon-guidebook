@@ -97,9 +97,9 @@
   .modal-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1rem;}
   .modal-meta span{background:linear-gradient(135deg,#F7F6FF 0%, #EEEDFE 100%);border:1px solid #D9D5FF;color:#4B458F;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:-0.01em;}
   .modal-desc{background:linear-gradient(135deg,#F6F4FF 0%,#EEEDFE 100%);border:1px solid #D9D5FF;border-left:4px solid #7F77DD;border-radius:16px;padding:1rem 1rem 1rem 1.1rem;font-size:14px;color:#3E3B57;line-height:1.7;margin-bottom:1rem;position:relative;}
-  .modal-desc::before{content:"교과 소개";display:block;font-size:12px;font-weight:700;color:#534AB7;margin-bottom:8px;}
+  .modal-desc::before{content:"과목 소개";display:block;font-size:12px;font-weight:700;color:#534AB7;margin-bottom:8px;}
   .eval-box{border-radius:var(--border-radius-md);padding:1rem;margin-bottom:1rem}
-  .eval-title{font-size:13px;font-weight:700;margin-bottom:0.6rem;display:flex;align-items:center;gap:6px}
+  .eval-title{font-size:14px;font-weight:700;margin-bottom:0.6rem;display:flex;align-items:center;gap:6px}
   .eval-row{display:flex;align-items:flex-start;gap:8px;font-size:13px;line-height:1.6;margin-bottom:6px}
   .eval-dot{width:6px;height:6px;border-radius:50%;margin-top:7px;flex-shrink:0}
   .eval-key{font-weight:700;white-space:nowrap}
@@ -248,10 +248,10 @@
       <div id="s1" class="sem-page active">
         <div class="section-label">학교 지정과목 (기본 이수)</div>
         <div class="designated-grid">
-          <div class="card c-kor fixed-subject-card" onclick="openModal('화법과 언어','국어 · 일반 · 4학점','5등급','언어 현상을 탐구하고 효과적인 말하기·듣기 능력을 기르는 과목입니다.',[], true)"><div class="type-tag">일반</div><h4>화법과 언어</h4><p>국어 · 4학점</p></div>
-          <div class="card c-math fixed-subject-card" onclick="openModal('확률과 통계','수학 · 일반 · 4학점','5등급','확률의 개념과 통계적 추론을 학습합니다.',[], true)"><div class="type-tag">일반</div><h4>확률과 통계</h4><p>수학 · 4학점</p></div>
-          <div class="card c-eng fixed-subject-card" onclick="openModal('영어 독해와 작문','영어 · 일반 · 4학점','5등급','다양한 영어 텍스트를 읽고 이해하며, 논리적인 영어 글쓰기 능력을 향상시킵니다.',[], true)"><div class="type-tag">일반</div><h4>영어 독해와 작문</h4><p>영어 · 4학점</p></div>
-          <div class="card c-pe fixed-subject-card" onclick="openModal('스포츠 문화','체육 · 진로 · 1학점','3단계','스포츠가 사회·문화에 미치는 영향을 탐구하고, 건강하고 활기찬 삶을 실천합니다.',[], true)"><div class="type-tag">진로</div><h4>스포츠 문화</h4><p>체육 · 1학점</p></div>
+          <div class="card c-kor fixed-subject-card" onclick="openModal('화법과 언어','국어 · 일반 · 4학점','5등급','다양한 담화 및 국어 자료를 탐구하여 화법과 언어에 대한 지식을 갖추고, 이를 바탕으로 일상 및 학업 상황에서 비판적·창의적으로 소통하는 능력을 기르는 일반 선택 과목입니다.',[], true)"><div class="type-tag">일반</div><h4>화법과 언어</h4><p>국어 · 4학점</p></div>
+          <div class="card c-math fixed-subject-card" onclick="openModal('확률과 통계','수학 · 일반 · 4학점','5등급','경우의 수, 확률, 통계의 개념과 원리를 탐구합니다. 불확실성이 내포된 현상을 수학적으로 모델링하고 통계적으로 추론하여 합리적으로 의사결정하는 역량을 함양하는 과목입니다.',[], true)"><div class="type-tag">일반</div><h4>확률과 통계</h4><p>수학 · 4학점</p></div>
+          <div class="card c-eng fixed-subject-card" onclick="openModal('영어 독해와 작문','영어 · 일반 · 4학점','5등급','다양한 주제의 영어 텍스트를 깊이 있게 읽고, 이를 바탕으로 자신의 생각과 의견을 논리적으로 구성하여 영어로 표현하는 독해 및 작문 능력을 통합적으로 기릅니다.',[], true)"><div class="type-tag">일반</div><h4>영어 독해와 작문</h4><p>영어 · 4학점</p></div>
+          <div class="card c-pe fixed-subject-card" onclick="openModal('스포츠 문화','체육 · 진로 · 1학점','3단계','스포츠의 역사와 윤리, 스포츠가 현대 사회 및 대중문화에 미치는 영향을 다각도로 탐구합니다. 스포츠 가치를 내면화하고 건강한 문화 시민으로 성장하는 것을 목표로 합니다.',[], true)"><div class="type-tag">진로</div><h4>스포츠 문화</h4><p>체육 · 1학점</p></div>
         </div>
         <div class="divider"></div>
         
@@ -260,12 +260,12 @@
         <div class="group-box" data-max="1">
           <div class="group-header"><div class="group-title">국어 · 수학 · 영어</div><span class="group-badge badge-pick1">6과목 중 택1</span></div>
           <div class="cards">
-            <div class="card c-kor" onclick="openModal('문학과 영상','국어 · 진로 · 3학점','5등급','문학 작품과 영상 매체를 연계하여 분석하고 감상하는 과목입니다.',[{name:'문학',type:'권장'}])"><div class="type-tag">진로</div><h4>문학과 영상</h4><p>국어 · 3학점</p></div>
-            <div class="card c-kor" onclick="openModal('독서 토론과 글쓰기','국어 · 융합 · 3학점','5등급','다양한 분야의 책을 읽고 토론하며 논리적인 글쓰기 역량을 기릅니다.',[{name:'독서와 작문',type:'권장'}])"><div class="type-tag">융합</div><h4>독서 토론과 글쓰기</h4><p>국어 · 3학점</p></div>
-            <div class="card c-math" onclick="openModal('미적분Ⅱ','수학 · 진로 · 3학점','5등급','미분과 적분의 심화 개념을 학습합니다. 자연과학·공학 계열 진학 희망자에게 필수 과목입니다.',[{name:'대수',type:'필수'},{name:'미적분Ⅰ',type:'필수'}])"><div class="type-tag">진로</div><h4>미적분Ⅱ</h4><p>수학 · 3학점</p></div>
-            <div class="card c-math" onclick="openModal('수학과제 탐구','수학 · 융합 · 3학점','5등급','수학적 개념을 실생활 문제에 적용하여 탐구하는 프로젝트 중심 과목입니다.',[])"><div class="type-tag">융합</div><h4>수학과제 탐구</h4><p>수학 · 3학점</p></div>
-            <div class="card c-eng" onclick="openModal('영미 문학 읽기','영어 · 진로 · 3학점','5등급','영미 문학 작품을 원문으로 읽고 분석하는 과목입니다.',[])"><div class="type-tag">진로</div><h4>영미 문학 읽기</h4><p>영어 · 3학점</p></div>
-            <div class="card c-eng" onclick="openModal('심화 영어 독해와 작문','영어 · 진로 · 3학점','5등급','고급 영어 텍스트 독해와 논술 작문을 심화 학습합니다.',[{name:'영어 독해와 작문',type:'권장'}])"><div class="type-tag">진로</div><h4>심화 영어 독해와 작문</h4><p>영어 · 3학점</p></div>
+            <div class="card c-kor" onclick="openModal('문학과 영상','국어 · 진로 · 3학점','5등급','문학 작품과 영상 매체(영화, 드라마 등)의 관계를 이해하고, 문학이 영상으로 어떻게 매체 변환되는지 비판적으로 분석·감상하며 창조적인 콘텐츠를 기획해보는 과목입니다.',[{name:'문학',type:'권장'}])"><div class="type-tag">진로</div><h4>문학과 영상</h4><p>국어 · 3학점</p></div>
+            <div class="card c-kor" onclick="openModal('독서 토론과 글쓰기','국어 · 융합 · 3학점','5등급_등급X','인문, 사회, 과학 등 다양한 분야의 텍스트를 읽고, 쟁점에 대해 토론하며 자신의 입장을 논리적인 글로 작성하는 과정을 통해 비판적 사고력과 융합적 문제 해결력을 기릅니다.',[{name:'독서와 작문',type:'권장'}])"><div class="type-tag">융합</div><h4>독서 토론과 글쓰기</h4><p>국어 · 3학점</p></div>
+            <div class="card c-math" onclick="openModal('미적분Ⅱ','수학 · 진로 · 3학점','5등급','수열의 극한, 여러 가지 함수(지수, 로그, 삼각함수)의 미분법과 적분법 등 해석학의 심화 내용을 다룹니다. 자연과학 및 공학 계열 진학에 필수적인 고급 수학 역량을 다집니다.',[{name:'대수',type:'필수'},{name:'미적분Ⅰ',type:'필수'}])"><div class="type-tag">진로</div><h4>미적분Ⅱ</h4><p>수학 · 3학점</p></div>
+            <div class="card c-math" onclick="openModal('수학과제 탐구','수학 · 융합 · 3학점','5등급_등급X','학생 스스로 수학적 관심사에 따라 탐구 주제를 선정하고, 자료를 수집·분석하여 문제를 해결한 뒤 결과 보고서를 작성하고 발표하는 프로젝트 중심의 자기주도적 과목입니다.',[])"><div class="type-tag">융합</div><h4>수학과제 탐구</h4><p>수학 · 3학점</p></div>
+            <div class="card c-eng" onclick="openModal('영미 문학 읽기','영어 · 진로 · 3학점','5등급','영어로 쓰인 소설, 시, 희곡 등 다양한 영미 문학 작품을 원문으로 감상합니다. 문학적 소양을 넓히고 인문학적 상상력을 바탕으로 심도 있는 영어 독해 능력을 함양합니다.',[])"><div class="type-tag">진로</div><h4>영미 문학 읽기</h4><p>영어 · 3학점</p></div>
+            <div class="card c-eng" onclick="openModal('심화 영어 독해와 작문','영어 · 진로 · 3학점','5등급','일반 과목보다 한 차원 높은 수준의 학술적이고 전문적인 텍스트를 읽고, 비판적 사고를 바탕으로 자신의 견해를 영어로 명확하고 논리적으로 표현하는 고급 작문 역량을 기릅니다.',[{name:'영어 독해와 작문',type:'권장'}])"><div class="type-tag">진로</div><h4>심화 영어 독해와 작문</h4><p>영어 · 3학점</p></div>
           </div>
         </div>
 
@@ -273,16 +273,16 @@
         <div class="group-box" data-max="3">
           <div class="group-header"><div class="group-title">사회 · 과학</div><span class="group-badge badge-pick3">10과목 중 택3</span></div>
           <div class="cards">
-            <div class="card c-soc" onclick="openModal('도시의 미래 탐구','사회 · 진로 · 3학점','5등급','미래 도시의 문제와 지속가능한 발전 방향을 탐구합니다.',[{name:'세계시민과 지리',type:'권장'}])"><div class="type-tag">진로</div><h4>도시의 미래 탐구</h4><p>사회 · 3학점</p></div>
-            <div class="card c-soc" onclick="openModal('한국지리 탐구','사회 · 진로 · 3학점','5등급','한국의 자연환경과 인문환경을 심화 탐구합니다.',[{name:'세계시민과 지리',type:'권장'}])"><div class="type-tag">진로</div><h4>한국지리 탐구</h4><p>사회 · 3학점</p></div>
-            <div class="card c-soc" onclick="openModal('동아시아 역사 기행','사회 · 진로 · 3학점','5등급','동아시아 각국의 역사와 문화를 여행하듯 탐구하는 과목입니다.',[{name:'세계사',type:'권장'}])"><div class="type-tag">진로</div><h4>동아시아 역사 기행</h4><p>사회 · 3학점</p></div>
-            <div class="card c-soc" onclick="openModal('법과 사회','사회 · 진로 · 3학점','5등급','법의 기본 원리와 사회적 역할을 학습합니다.',[])"><div class="type-tag">진로</div><h4>법과 사회</h4><p>사회 · 3학점</p></div>
-            <div class="card c-soc" onclick="openModal('인문학과 윤리','사회 · 진로 · 3학점','5등급','인문학적 관점에서 윤리 문제를 탐구합니다.',[{name:'현대사회와 윤리',type:'권장'},{name:'윤리와 사상',type:'권장'}])"><div class="type-tag">진로</div><h4>인문학과 윤리</h4><p>사회 · 3학점</p></div>
-            <div class="card c-sci" onclick="openModal('전자기와 양자','과학 · 진로 · 3학점','5등급','전자기력과 양자역학의 기초를 탐구합니다.',[{name:'물리학',type:'권장'}])"><div class="type-tag">진로</div><h4>전자기와 양자</h4><p>과학 · 3학점</p></div>
-            <div class="card c-sci" onclick="openModal('물질과 에너지','과학 · 진로 · 3학점','5등급','물질의 구조와 에너지 변환을 탐구합니다.',[{name:'화학',type:'권장'}])"><div class="type-tag">진로</div><h4>물질과 에너지</h4><p>과학 · 3학점</p></div>
-            <div class="card c-sci" onclick="openModal('세포와 물질대사','과학 · 진로 · 3학점','5등급','세포의 구조와 물질대사 과정을 심화 탐구합니다.',[{name:'생명과학',type:'권장'}])"><div class="type-tag">진로</div><h4>세포와 물질대사</h4><p>과학 · 3학점</p></div>
-            <div class="card c-sci" onclick="openModal('지구시스템과학','과학 · 진로 · 3학점','5등급','지구를 하나의 시스템으로 이해하고 대기·해양·지권의 상호작용을 탐구합니다.',[{name:'지구과학',type:'권장'}])"><div class="type-tag">진로</div><h4>지구시스템과학</h4><p>과학 · 3학점</p></div>
-            <div class="card c-sci" onclick="openModal('융합과학 탐구','과학 · 융합 · 3학점','5등급_등급X','물리·화학·생물·지구과학을 융합하여 실생활 문제를 탐구하는 과목입니다.',[])"><div class="type-tag">융합</div><h4>융합과학 탐구</h4><p>과학 · 3학점</p></div>
+            <div class="card c-soc" onclick="openModal('도시의 미래 탐구','사회 · 진로 · 3학점','5등급','현대 도시의 공간적 구조와 문제점을 지리적 관점에서 분석하고, 스마트 시티, 친환경 도시 등 지속 가능한 미래 도시의 발전 방향과 디자인을 탐구하는 과목입니다.',[{name:'세계시민과 지리',type:'권장'}])"><div class="type-tag">진로</div><h4>도시의 미래 탐구</h4><p>사회 · 3학점</p></div>
+            <div class="card c-soc" onclick="openModal('한국지리 탐구','사회 · 진로 · 3학점','5등급','우리나라 국토의 자연환경과 인문환경을 심도 있게 이해하고, 지역 불균형, 인구 변화, 국토 통일 문제 등 국가적 현안을 지리적 공간적 관점에서 종합적으로 분석합니다.',[{name:'세계시민과 지리',type:'권장'}])"><div class="type-tag">진로</div><h4>한국지리 탐구</h4><p>사회 · 3학점</p></div>
+            <div class="card c-soc" onclick="openModal('동아시아 역사 기행','사회 · 진로 · 3학점','5등급','한국, 중국, 일본 등 동아시아 지역의 역사적 전개 과정과 문화 교류 양상을 기행문이나 주제별 탐구 형식으로 접근하여, 동아시아의 평화와 공존 방안을 모색합니다.',[{name:'세계사',type:'권장'}])"><div class="type-tag">진로</div><h4>동아시아 역사 기행</h4><p>사회 · 3학점</p></div>
+            <div class="card c-soc" onclick="openModal('법과 사회','사회 · 진로 · 3학점','5등급','민주 시민으로서 갖추어야 할 법적 지식과 소양을 기릅니다. 헌법, 민법, 형법 등의 기초 법리를 배우고, 실생활에서 발생하는 다양한 법적 분쟁 및 권리 구제 과정을 학습합니다.',[])"><div class="type-tag">진로</div><h4>법과 사회</h4><p>사회 · 3학점</p></div>
+            <div class="card c-soc" onclick="openModal('인문학과 윤리','사회 · 진로 · 3학점','5등급','문학, 철학, 역사, 예술 등 인문학적 텍스트에 담긴 윤리적 의미를 탐구하고, 인간 삶의 본질적 가치와 도덕적 딜레마를 심도 있게 성찰하는 윤리 교과 심화 과목입니다.',[{name:'현대사회와 윤리',type:'권장'},{name:'윤리와 사상',type:'권장'}])"><div class="type-tag">진로</div><h4>인문학과 윤리</h4><p>사회 · 3학점</p></div>
+            <div class="card c-sci" onclick="openModal('전자기와 양자','과학 · 진로 · 3학점','5등급','전자기장, 맥스웰 방정식 등 전자기학의 원리와 현대 물리학의 기초가 되는 양자역학의 기본 개념을 학습하여 첨단 과학기술의 바탕을 수학적, 논리적으로 이해하는 과목입니다.',[{name:'물리학',type:'권장'}])"><div class="type-tag">진로</div><h4>전자기와 양자</h4><p>과학 · 3학점</p></div>
+            <div class="card c-sci" onclick="openModal('물질과 에너지','과학 · 진로 · 3학점','5등급','물질의 결합 구조와 성질, 화학 반응에 수반되는 열과 에너지 변화 등을 깊이 있게 탐구하여, 화학 공학 및 신소재 분야로 진학하기 위한 심도 있는 기초 지식을 다집니다.',[{name:'화학',type:'권장'}])"><div class="type-tag">진로</div><h4>물질과 에너지</h4><p>과학 · 3학점</p></div>
+            <div class="card c-sci" onclick="openModal('세포와 물질대사','과학 · 진로 · 3학점','5등급','생명 현상의 기본 단위인 세포의 미세 구조와 유기적 기능, 생명체 내에서 일어나는 광합성과 세포 호흡 등 물질대사 메커니즘을 심화 탐구하는 생명과학 과목입니다.',[{name:'생명과학',type:'권장'}])"><div class="type-tag">진로</div><h4>세포와 물질대사</h4><p>과학 · 3학점</p></div>
+            <div class="card c-sci" onclick="openModal('지구시스템과학','과학 · 진로 · 3학점','5등급','지구를 구성하는 기권, 수권, 지권, 생물권의 상호작용을 시스템적 관점에서 이해하고, 대기와 해양의 순환, 지구의 역사와 우주 환경을 종합적으로 탐구하는 지구과학 과목입니다.',[{name:'지구과학',type:'권장'}])"><div class="type-tag">진로</div><h4>지구시스템과학</h4><p>과학 · 3학점</p></div>
+            <div class="card c-sci" onclick="openModal('융합과학 탐구','과학 · 융합 · 3학점','5등급_등급X','물리, 화학, 생명과학, 지구과학 등 과학의 분절적 지식을 융합하여, 첨단 기술 및 실생활 관련 복합적인 주제를 선정하고 과학적 탐구 방법을 적용해 문제를 해결해 보는 프로젝트형 과목입니다.',[])"><div class="type-tag">융합</div><h4>융합과학 탐구</h4><p>과학 · 3학점</p></div>
           </div>
         </div>
 
@@ -290,11 +290,11 @@
         <div class="group-box" data-max="1">
           <div class="group-header"><div class="group-title">기술·가정/정보 · 제2외국어/한문</div><span class="group-badge badge-pick1">5과목 중 택1</span></div>
           <div class="cards">
-            <div class="card c-tech" onclick="openModal('생활과학 탐구','기술·가정 · 진로 · 3학점','5등급','생활 속 과학 원리를 탐구하고 실생활 문제를 과학적으로 해결하는 과목입니다.',[])"><div class="type-tag">진로</div><h4>생활과학 탐구</h4><p>기술·가정 · 3학점</p></div>
-            <div class="card c-tech" onclick="openModal('데이터 과학','정보 · 진로 · 3학점','5등급','데이터 수집·분석·시각화의 기초를 학습합니다.',[{name:'정보',type:'권장'}])"><div class="type-tag">진로</div><h4>데이터 과학</h4><p>정보 · 3학점</p></div>
-            <div class="card c-lang" onclick="openModal('독일어권 문화','제2외국어 · 융합 · 3학점','5등급','독일어권 국가의 문화·역사·사회를 탐구합니다.',[])"><div class="type-tag">융합</div><h4>독일어권 문화</h4><p>제2외국어 · 3학점</p></div>
-            <div class="card c-lang" onclick="openModal('중국 문화','제2외국어 · 융합 · 3학점','5등급','중국의 역사·문화·사회를 탐구하는 과목입니다.',[])"><div class="type-tag">융합</div><h4>중국 문화</h4><p>제2외국어 · 3학점</p></div>
-            <div class="card c-lang" onclick="openModal('한문 고전 읽기','한문 · 진로 · 3학점','5등급','한문으로 쓰인 고전 문헌을 읽고 해석하는 과목입니다.',[])"><div class="type-tag">진로</div><h4>한문 고전 읽기</h4><p>한문 · 3학점</p></div>
+            <div class="card c-tech" onclick="openModal('생활과학 탐구','기술·가정 · 진로 · 3학점','5등급','의식주 생활, 소비, 가족 관계 등 일상생활의 다양한 현상을 과학적 원리와 연계하여 탐구하고, 실천적인 문제 해결 및 관리 능력을 기르는 진로 탐색 과목입니다.',[])"><div class="type-tag">진로</div><h4>생활과학 탐구</h4><p>기술·가정 · 3학점</p></div>
+            <div class="card c-tech" onclick="openModal('데이터 과학','정보 · 진로 · 3학점','5등급','4차 산업혁명 시대의 핵심인 데이터를 효율적으로 수집, 처리, 시각화, 분석하는 원리와 프로그래밍 기법을 학습하여 데이터 기반의 논리적 의사결정 능력을 기릅니다.',[{name:'정보',type:'권장'}])"><div class="type-tag">진로</div><h4>데이터 과학</h4><p>정보 · 3학점</p></div>
+            <div class="card c-lang" onclick="openModal('독일어권 문화','제2외국어 · 융합 · 3학점','5등급_등급X','기초적인 언어 학습을 바탕으로 독일어권 국가들의 역사, 전통, 대중문화, 사회 제도를 폭넓게 탐구하며 세계 시민으로서의 문화적 다양성과 상호 존중 태도를 함양합니다.',[])"><div class="type-tag">융합</div><h4>독일어권 문화</h4><p>제2외국어 · 3학점</p></div>
+            <div class="card c-lang" onclick="openModal('중국 문화','제2외국어 · 융합 · 3학점','5등급_등급X','중국어 학습과 연계하여 중국의 고유한 역사, 지리, 전통 예술, 현대 사회 양상을 종합적으로 탐구하고, 이웃 국가에 대한 이해의 폭을 넓히는 문화 융합 과목입니다.',[])"><div class="type-tag">융합</div><h4>중국 문화</h4><p>제2외국어 · 3학점</p></div>
+            <div class="card c-lang" onclick="openModal('한문 고전 읽기','한문 · 진로 · 3학점','5등급','한문으로 기록된 다양한 선인들의 고전 문헌을 원전으로 강독하고 해석하여, 전통문화의 가치를 계승하고 현대 사회에 필요한 인문학적 통찰력과 삶의 지혜를 배웁니다.',[])"><div class="type-tag">진로</div><h4>한문 고전 읽기</h4><p>한문 · 3학점</p></div>
           </div>
         </div>
       </div>
@@ -303,7 +303,7 @@
       <div id="s2" class="sem-page">
         <div class="section-label">학교 지정과목 (기본 이수)</div>
         <div class="designated-grid">
-          <div class="card c-pe fixed-subject-card" onclick="openModal('스포츠 과학','체육 · 진로 · 1학점','3단계','스포츠와 과학을 융합하여 운동 능력 향상의 원리를 탐구합니다.',[], true)"><div class="type-tag">진로</div><h4>스포츠 과학</h4><p>체육 · 1학점</p></div>
+          <div class="card c-pe fixed-subject-card" onclick="openModal('스포츠 과학','체육 · 진로 · 1학점','3단계','스포츠와 인체 생리학, 생체 역학, 심리학 등 과학적 원리를 융합하여 운동 능력 향상 및 건강 증진의 원리를 체계적으로 탐구하고 체험하는 과목입니다.',[], true)"><div class="type-tag">진로</div><h4>스포츠 과학</h4><p>체육 · 1학점</p></div>
         </div>
         <div class="divider"></div>
         
@@ -312,12 +312,12 @@
         <div class="group-box" data-max="3">
           <div class="group-header"><div class="group-title">국어 · 수학 · 영어</div><span class="group-badge badge-pick3">6과목 중 택3 · 각 4학점</span></div>
           <div class="cards">
-            <div class="card c-kor" onclick="openModal('직무 의사소통','국어 · 진로 · 4학점','5등급','직무 현장에서 필요한 의사소통 능력을 기르는 과목입니다.',[])"><div class="type-tag">진로</div><h4>직무 의사소통</h4><p>국어 · 4학점</p></div>
-            <div class="card c-kor" onclick="openModal('매체 의사소통','국어 · 융합 · 4학점','5등급','다양한 매체를 활용한 의사소통 방식을 탐구합니다.',[])"><div class="type-tag">융합</div><h4>매체 의사소통</h4><p>국어 · 4학점</p></div>
-            <div class="card c-math" onclick="openModal('실용 통계','수학 · 융합 · 4학점','5등급','실생활 데이터를 수집하고 분석하는 통계 과목입니다.',[{name:'확률과 통계',type:'필수'}])"><div class="type-tag">융합</div><h4>실용 통계</h4><p>수학 · 4학점</p></div>
-            <div class="card c-math" onclick="openModal('수학과 문화','수학 · 융합 · 4학점','5등급','수학과 예술·문화·역사의 연관성을 탐구합니다.',[])"><div class="type-tag">융합</div><h4>수학과 문화</h4><p>수학 · 4학점</p></div>
-            <div class="card c-eng" onclick="openModal('실생활 영어 회화','영어 · 융합 · 4학점','5등급','일상생활과 직무 현장에서 필요한 영어 회화 능력을 기르는 과목입니다.',[])"><div class="type-tag">융합</div><h4>실생활 영어 회화</h4><p>영어 · 4학점</p></div>
-            <div class="card c-eng" onclick="openModal('세계 문화와 영어','영어 · 융합 · 4학점','5등급','영어로 세계 여러 나라의 문화를 탐구하는 과목입니다.',[])"><div class="type-tag">융합</div><h4>세계 문화와 영어</h4><p>영어 · 4학점</p></div>
+            <div class="card c-kor" onclick="openModal('직무 의사소통','국어 · 진로 · 4학점','5등급','졸업 후 직업 생활을 영위하는 데 필요한 실질적인 언어 능력을 함양합니다. 직무 현장에서 빈번히 요구되는 문서 작성, 발표, 협상, 면접 등의 기술을 실무 중심으로 학습합니다.',[])"><div class="type-tag">진로</div><h4>직무 의사소통</h4><p>국어 · 4학점</p></div>
+            <div class="card c-kor" onclick="openModal('매체 의사소통','국어 · 융합 · 4학점','5등급_등급X','디지털 공간과 소셜 미디어 등 다양한 매체의 특성과 언어를 이해하고, 방대한 정보를 비판적으로 수용하며 자신만의 매체 콘텐츠를 기획·생산하는 융합적 역량을 키웁니다.',[])"><div class="type-tag">융합</div><h4>매체 의사소통</h4><p>국어 · 4학점</p></div>
+            <div class="card c-math" onclick="openModal('실용 통계','수학 · 융합 · 4학점','5등급_등급X','실생활 및 다양한 학문 분야의 데이터를 통계 소프트웨어(공학 도구)를 활용하여 수집, 시각화, 분석, 해석하는 능력을 기르며 빅데이터 시대의 데이터 리터러시를 함양합니다.',[{name:'확률과 통계',type:'필수'}])"><div class="type-tag">융합</div><h4>실용 통계</h4><p>수학 · 4학점</p></div>
+            <div class="card c-math" onclick="openModal('수학과 문화','수학 · 융합 · 4학점','5등급_등급X','수학이 미술, 음악, 건축, 철학, 역사 등 다양한 인류 문화 영역과 상호작용하며 발전해 온 과정을 탐구합니다. 수학의 예술적 가치와 인문학적 의미를 폭넓게 이해합니다.',[])"><div class="type-tag">융합</div><h4>수학과 문화</h4><p>수학 · 4학점</p></div>
+            <div class="card c-eng" onclick="openModal('실생활 영어 회화','영어 · 융합 · 4학점','5등급_등급X','일상생활, 해외여행, 기초적인 직무 상황 등에서 마주하는 다양한 맥락 속에서 자연스럽고 적절하게 의사소통할 수 있는 실용적인 영어 말하기와 듣기 능력을 기릅니다.',[])"><div class="type-tag">융합</div><h4>실생활 영어 회화</h4><p>영어 · 4학점</p></div>
+            <div class="card c-eng" onclick="openModal('세계 문화와 영어','영어 · 융합 · 4학점','5등급_등급X','영어를 학습 도구로 사용하여 세계 여러 나라의 역사, 지리, 문학, 사회 제도를 폭넓게 탐구함으로써, 글로벌 마인드를 기르고 타 문화에 대한 포용적 태도를 함양합니다.',[])"><div class="type-tag">융합</div><h4>세계 문화와 영어</h4><p>영어 · 4학점</p></div>
           </div>
         </div>
 
@@ -325,12 +325,12 @@
         <div class="group-box" data-max="3">
           <div class="group-header"><div class="group-title">사회 · 과학</div><span class="group-badge badge-pick3">6과목 중 택3</span></div>
           <div class="cards">
-            <div class="card c-soc" onclick="openModal('윤리문제 탐구','사회 · 융합 · 3학점','5등급_등급X','현대 사회의 다양한 윤리 문제를 탐구합니다.',[{name:'현대사회와 윤리',type:'권장'},{name:'윤리와 사상',type:'권장'}])"><div class="type-tag">융합</div><h4>윤리문제 탐구</h4><p>사회 · 3학점</p></div>
-            <div class="card c-soc" onclick="openModal('여행지리','사회 · 융합 · 3학점','5등급_등급X','여행을 통해 세계 각 지역의 지리적 특성과 문화를 탐구합니다.',[{name:'세계시민과 지리',type:'권장'}])"><div class="type-tag">융합</div><h4>여행지리</h4><p>사회 · 3학점</p></div>
-            <div class="card c-soc" onclick="openModal('역사로 탐구하는 현대 세계','사회 · 융합 · 3학점','5등급_등급X','역사적 사건과 흐름을 통해 현대 세계를 분석하는 과목입니다.',[{name:'세계사',type:'권장'}])"><div class="type-tag">융합</div><h4>역사로 탐구하는 현대 세계</h4><p>사회 · 3학점</p></div>
-            <div class="card c-soc" onclick="openModal('금융과 경제생활','사회 · 융합 · 3학점','5등급_등급X','금융의 기본 원리와 경제생활에 필요한 실용 지식을 학습합니다.',[{name:'경제',type:'권장'}])"><div class="type-tag">융합</div><h4>금융과 경제생활</h4><p>사회 · 3학점</p></div>
-            <div class="card c-sci" onclick="openModal('과학의 역사와 문화','과학 · 융합 · 3학점','5등급_등급X','과학이 발전해온 역사와 문화적 맥락을 탐구합니다.',[])"><div class="type-tag">융합</div><h4>과학의 역사와 문화</h4><p>과학 · 3학점</p></div>
-            <div class="card c-sci" onclick="openModal('기후변화와 환경생태','과학 · 융합 · 3학점','5등급_등급X','기후변화의 원인과 영향을 생태계와 연계하여 탐구합니다.',[])"><div class="type-tag">융합</div><h4>기후변화와 환경생태</h4><p>과학 · 3학점</p></div>
+            <div class="card c-soc" onclick="openModal('윤리문제 탐구','사회 · 융합 · 3학점','5등급_등급X','생명, 정보, 환경, 다문화 등 현대 사회에서 새롭게 등장하는 복잡한 윤리적 쟁점들을 깊이 있게 탐구하고, 토론을 통해 도덕적 가치 판단 능력과 실천적 대안을 모색합니다.',[{name:'현대사회와 윤리',type:'권장'},{name:'윤리와 사상',type:'권장'}])"><div class="type-tag">융합</div><h4>윤리문제 탐구</h4><p>사회 · 3학점</p></div>
+            <div class="card c-soc" onclick="openModal('여행지리','사회 · 융합 · 3학점','5등급_등급X','현대인의 중요한 여가 활동인 여행을 지리적 관점에서 접근합니다. 국내외 주요 여행지의 자연경관, 문화적 매력, 관광 산업 등을 탐구하며 지역의 다양성을 폭넓게 이해합니다.',[{name:'세계시민과 지리',type:'권장'}])"><div class="type-tag">융합</div><h4>여행지리</h4><p>사회 · 3학점</p></div>
+            <div class="card c-soc" onclick="openModal('역사로 탐구하는 현대 세계','사회 · 융합 · 3학점','5등급_등급X','현대 세계의 국제 분쟁, 인권, 환경, 경제 세계화 등의 주요 이슈들을 과거의 역사적 연원과 맥락 속에서 비판적으로 분석하고, 바람직한 세계 시민의 역할을 고찰합니다.',[{name:'세계사',type:'권장'}])"><div class="type-tag">융합</div><h4>역사로 탐구하는 현대 세계</h4><p>사회 · 3학점</p></div>
+            <div class="card c-soc" onclick="openModal('금융과 경제생활','사회 · 융합 · 3학점','5등급_등급X','합리적인 경제생활과 자산 관리를 위해 필수적인 금융 지식, 신용 관리, 저축과 투자, 금융 윤리 등을 실생활 사례를 중심으로 실용적이고 체계적으로 학습합니다.',[{name:'경제',type:'권장'}])"><div class="type-tag">융합</div><h4>금융과 경제생활</h4><p>사회 · 3학점</p></div>
+            <div class="card c-sci" onclick="openModal('과학의 역사와 문화','과학 · 융합 · 3학점','5등급_등급X','고대부터 현대에 이르기까지 과학이 어떻게 발전해 왔으며, 그것이 인류의 사회, 문화, 철학적 세계관에 어떠한 영향을 미쳤는지 인문·사회과학적 관점에서 융합적으로 조망합니다.',[])"><div class="type-tag">융합</div><h4>과학의 역사와 문화</h4><p>과학 · 3학점</p></div>
+            <div class="card c-sci" onclick="openModal('기후변화와 환경생태','과학 · 융합 · 3학점','5등급_등급X','전 지구적 위기인 기후변화의 과학적 원리를 분석하고, 이것이 생태계와 인류 생존에 미치는 영향을 탐구하여 탄소 중립 등 지속 가능한 환경을 위한 실천적 해결 방안을 모색합니다.',[])"><div class="type-tag">융합</div><h4>기후변화와 환경생태</h4><p>과학 · 3학점</p></div>
           </div>
         </div>
 
@@ -338,8 +338,8 @@
         <div class="group-box" data-max="1">
           <div class="group-header"><div class="group-title">음악 · 미술</div><span class="group-badge badge-pick1">2과목 중 택1 · 2학점</span></div>
           <div class="cards">
-            <div class="card c-art" onclick="openModal('음악 연주와 창작','음악 · 진로 · 2학점','3단계','악기 연주와 음악 창작 활동을 통해 음악적 표현 능력을 기르는 과목입니다.',[])"><div class="type-tag">진로</div><h4>음악 연주와 창작</h4><p>음악 · 2학점</p></div>
-            <div class="card c-art" onclick="openModal('미술과 매체','미술 · 융합 · 2학점','3단계','다양한 매체를 활용한 미술 표현을 탐구합니다.',[])"><div class="type-tag">융합</div><h4>미술과 매체</h4><p>미술 · 2학점</p></div>
+            <div class="card c-art" onclick="openModal('음악 연주와 창작','음악 · 진로 · 2학점','3단계','성악 및 기악 연주 역량을 기르고, 디지털 도구를 활용하거나 직접 선율을 작곡하는 등 심화된 창작 활동을 통해 음악적 표현 능력과 예술적 감수성을 함양합니다.',[])"><div class="type-tag">진로</div><h4>음악 연주와 창작</h4><p>음악 · 2학점</p></div>
+            <div class="card c-art" onclick="openModal('미술과 매체','미술 · 융합 · 2학점','3단계','전통 미술의 경계를 넘어 사진, 영상, 디지털 미디어 등 다양한 매체의 특성을 활용한 미술 창작과 감상 활동을 통해 시각 문화 시대의 미적 소통 능력을 기릅니다.',[])"><div class="type-tag">융합</div><h4>미술과 매체</h4><p>미술 · 2학점</p></div>
           </div>
         </div>
 
@@ -347,8 +347,8 @@
         <div class="group-box" data-max="1">
           <div class="group-header"><div class="group-title">교양</div><span class="group-badge badge-pick1-purple">2과목 중 택1 · 2학점</span></div>
           <div class="cards">
-            <div class="card c-edu" onclick="openModal('인간과 철학','교양 · 진로 · 2학점','PF','인간 존재와 삶의 의미를 철학적으로 탐구합니다.',[])"><div class="type-tag">진로</div><h4>인간과 철학</h4><p>교양 · 2학점</p></div>
-            <div class="card c-edu" onclick="openModal('논리와 사고','교양 · 진로 · 2학점','PF','논리적 사고의 원리와 방법을 학습합니다.',[])"><div class="type-tag">진로</div><h4>논리와 사고</h4><p>교양 · 2학점</p></div>
+            <div class="card c-edu" onclick="openModal('인간과 철학','교양 · 진로 · 2학점','PF','인간 존재의 본질, 앎의 근원, 삶의 궁극적 의미와 가치 등 근본적인 물음에 대해 철학자들의 사유를 바탕으로 깊이 있게 성찰하며 인문학적 통찰력을 기릅니다.',[])"><div class="type-tag">진로</div><h4>인간과 철학</h4><p>교양 · 2학점</p></div>
+            <div class="card c-edu" onclick="openModal('논리와 사고','교양 · 진로 · 2학점','PF','생각을 올바르게 이끌어내는 연역과 귀납 등의 논리적 규칙을 배우고, 오류를 피하며 합리적으로 추론하는 방법을 익혀 모든 학문의 기초가 되는 비판적 사고력을 기릅니다.',[])"><div class="type-tag">진로</div><h4>논리와 사고</h4><p>교양 · 2학점</p></div>
           </div>
         </div>
       </div>
@@ -419,11 +419,12 @@
 </div>
 
 <script>
+// 2022 개정 교육과정 기준 평가 지침 반영
 const evalData = {
-  '5등급':{bg:'#E6F1FB',tc:'#0C447C',dc:'#378ADD',vc:'#185FA5',title:'성적 처리 방식',rows:[{k:'성취도',v:'5단계 (A·B·C·D·E)'},{k:'석차등급',v:'5등급 산출 — 대학 입시 반영'},{k:'대학 제공',v:'성취도별 분포비율 · 과목평균 · 수강자수'}]},
-  '5등급_등급X':{bg:'#E1F5EE',tc:'#085041',dc:'#1D9E75',vc:'#0F6E56',title:'성적 처리 방식 (석차등급 미산출)',rows:[{k:'성취도',v:'5단계 (A·B·C·D·E)'},{k:'석차등급',v:'산출 없음 — 사회·과학 융합선택과목'},{k:'대학 제공',v:'성취도별 분포비율 · 과목평균 · 수강자수'}]},
-  '3단계':{bg:'#FAECE7',tc:'#4A1B0C',dc:'#D85A30',vc:'#993C1D',title:'성적 처리 방식',rows:[{k:'성취도',v:'3단계 (A·B·C)'},{k:'석차등급',v:'산출 없음'},{k:'해당 교과',v:'체육 · 예술 교과 전 과목'}]},
-  'PF':{bg:'#EEEDFE',tc:'#3C3489',dc:'#7F77DD',vc:'#534AB7',title:'성적 처리 방식',rows:[{k:'성취도',v:'P (이수) / F (미이수)'},{k:'석차등급',v:'산출 없음'},{k:'해당 교과',v:'교양 교과 전 과목'}]}
+  '5등급':{bg:'#E6F1FB',tc:'#0C447C',dc:'#378ADD',vc:'#185FA5',title:'성적 처리 방식 (일반/진로 선택)',rows:[{k:'성취도',v:'5단계 (A·B·C·D·E) 표기'},{k:'석차등급',v:'5등급제 산출 (상위 10% 1등급)'},{k:'대입 반영',v:'석차등급이 산출되어 대학 입시에 주요하게 반영됩니다.'}]},
+  '5등급_등급X':{bg:'#E1F5EE',tc:'#085041',dc:'#1D9E75',vc:'#0F6E56',title:'성적 처리 방식 (융합 선택)',rows:[{k:'성취도',v:'5단계 (A·B·C·D·E) 표기 (절대평가)'},{k:'석차등급',v:'산출 없음 (등급 미기재)'},{k:'대입 반영',v:'수강자의 등급 스트레스 완화를 위해 성취도만 제공됩니다.'}]},
+  '3단계':{bg:'#FAECE7',tc:'#4A1B0C',dc:'#D85A30',vc:'#993C1D',title:'성적 처리 방식 (체육/예술)',rows:[{k:'성취도',v:'3단계 (A·B·C) 표기'},{k:'석차등급',v:'산출 없음'},{k:'대입 반영',v:'원점수와 과목평균 없이 성취도만 대입 자료로 제공됩니다.'}]},
+  'PF':{bg:'#EEEDFE',tc:'#3C3489',dc:'#7F77DD',vc:'#534AB7',title:'성적 처리 방식 (교양)',rows:[{k:'성취도',v:'P(Pass, 이수) / F(Fail, 미이수) 표기'},{k:'석차등급',v:'산출 없음'},{k:'대입 반영',v:'단순 이수 여부(P)만 학교생활기록부에 기재됩니다.'}]}
 };
 
 // 장바구니 상태 관리 (학점과 학기를 함께 저장)
