@@ -21,45 +21,17 @@
   body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:#fdfdfd;color:var(--color-text-primary)}
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
   .container{max-width:480px;margin:0 auto;padding:1rem;background:#fff;min-height:100vh}
- 
-  /* HERO SPLASH with logo background */
-  .splash{
-    position:relative;
-    text-align:center;
-    padding:2.5rem 1.5rem 2rem;
-    border-radius:var(--border-radius-lg);
-    margin-bottom:1.5rem;
-    background:#1a1464;
-    overflow:hidden;
-  }
-  .splash-bg-logo{
-    position:absolute;
-    top:50%;left:50%;
-    transform:translate(-50%,-50%);
-    width:320px;height:320px;
-    object-fit:contain;
-    opacity:0.07;
-    pointer-events:none;
-    user-select:none;
-  }
+  .splash{position:relative;text-align:center;padding:2.5rem 1.5rem 2rem;border-radius:var(--border-radius-lg);margin-bottom:1.5rem;background:#1a1464;overflow:hidden}
+  .splash-bg-logo{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:320px;height:320px;object-fit:contain;opacity:0.07;pointer-events:none;user-select:none}
   .splash > *:not(.splash-bg-logo){position:relative;z-index:1}
-  .splash-logo{
-    width:100px;height:100px;
-    border-radius:50%;
-    object-fit:cover;
-    margin:0 auto 1rem;
-    display:block;
-    box-shadow:0 4px 24px rgba(0,0,0,0.35);
-    border:3px solid rgba(255,255,255,0.25);
-  }
+  .splash-logo{width:100px;height:100px;border-radius:50%;object-fit:cover;margin:0 auto 1rem;display:block;box-shadow:0 4px 24px rgba(0,0,0,0.35);border:3px solid rgba(255,255,255,0.25)}
   .splash-school{font-size:11px;font-weight:600;color:#AFA9EC;letter-spacing:0.1em;margin-bottom:6px;text-transform:uppercase}
   .splash-title{font-size:22px;font-weight:700;color:#ffffff;margin-bottom:6px;line-height:1.4}
   .splash-sub{font-size:13px;color:#AFA9EC;margin-bottom:1.5rem;line-height:1.6}
   .splash-divider{width:40px;height:2px;background:#7F77DD;margin:0 auto 1.25rem}
-  .principal-box{background:rgba(255,255,255,0.1);padding:1rem 1.25rem;border-left:3px solid #7F77DD;text-align:left;border-radius:0}
+  .principal-box{background:rgba(255,255,255,0.1);padding:1rem 1.25rem;border-left:3px solid #7F77DD;text-align:left}
   .principal-box p{font-size:13px;color:#D5D2F8;line-height:1.75}
   .principal-box .sig{font-size:12px;color:#AFA9EC;margin-top:8px;font-weight:600}
- 
   .nav-tabs{display:flex;gap:6px;margin-bottom:1.5rem;border-bottom:0.5px solid var(--color-border-tertiary);padding-bottom:0}
   .nav-tab{padding:9px 14px;font-size:14px;cursor:pointer;color:var(--color-text-secondary);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;font-weight:500}
   .nav-tab.active{color:#3C3489;border-bottom-color:#3C3489;font-weight:700}
@@ -111,6 +83,15 @@
   .eval-row{display:flex;align-items:flex-start;gap:8px;font-size:13px;line-height:1.6;margin-bottom:6px}
   .eval-dot{width:6px;height:6px;border-radius:50%;margin-top:7px;flex-shrink:0}
   .eval-key{font-weight:700;white-space:nowrap}
+  /* 관련학과/직업 박스 */
+  .career-box{background:#F0F9F5;border:1px solid #9FE1CB;border-radius:var(--border-radius-md);padding:1rem;margin-bottom:1rem}
+  .career-title{font-size:14px;font-weight:700;color:#085041;margin-bottom:0.75rem;display:flex;align-items:center;gap:6px}
+  .career-row{display:flex;align-items:flex-start;gap:8px;font-size:13px;line-height:1.65;margin-bottom:8px}
+  .career-row:last-child{margin-bottom:0}
+  .career-label{font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+  .career-label-dept{background:#D0F0E4;color:#085041}
+  .career-label-job{background:#FAEEDA;color:#633806}
+  .career-text{font-size:13px;color:#3E3B57;line-height:1.6}
   .prereq-box{background:#F1EFE8;border-radius:var(--border-radius-md);padding:1rem}
   .prereq-title{font-size:13px;font-weight:700;color:#2C2C2A;margin-bottom:0.75rem;display:flex;align-items:center;gap:6px}
   .prereq-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid #E2E0D8;cursor:pointer}
@@ -149,114 +130,32 @@
 <div class="container">
  
   <!-- 입장 화면 -->
-  <div id="intro-screen" style="
-    position:fixed;top:0;left:0;right:0;bottom:0;
-    background:#ffffff;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    z-index:100;
-    padding:2rem;
-    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
-  ">
-    <!-- 배경 패턴 -->
+  <div id="intro-screen" style="position:fixed;top:0;left:0;right:0;bottom:0;background:#ffffff;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:100;padding:2rem;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
     <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none">
       <div style="position:absolute;top:-100px;right:-100px;width:350px;height:350px;border-radius:50%;background:rgba(60,52,137,0.05)"></div>
       <div style="position:absolute;bottom:-80px;left:-80px;width:280px;height:280px;border-radius:50%;background:rgba(60,52,137,0.04)"></div>
-      <div style="position:absolute;top:40%;left:-60px;width:180px;height:180px;border-radius:50%;background:rgba(60,52,137,0.03)"></div>
     </div>
- 
     <div style="position:relative;z-index:1;text-align:center;animation:fadeUp 0.7s ease both">
-      <!-- 로고 -->
-      <img src="data:image/png;base64,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"
-        alt="진천고등학교 로고"
-        style="width:120px;height:120px;border-radius:50%;object-fit:cover;
-               box-shadow:0 8px 32px rgba(60,52,137,0.18);
-               border:4px solid #EEEDFE;
-               margin-bottom:1.5rem;display:block;margin-left:auto;margin-right:auto;
-               animation:logoIn 0.8s cubic-bezier(0.34,1.56,0.64,1) both">
- 
-      <!-- SINCE -->
-      <div style="font-size:11px;font-weight:600;color:#9994AE;letter-spacing:0.15em;margin-bottom:8px;text-transform:uppercase">
-        JINCHEON HIGH SCHOOL · SINCE 1977
-      </div>
- 
-      <!-- 학교명 -->
-      <h1 style="font-size:26px;font-weight:700;color:#1a1464;margin-bottom:6px;letter-spacing:-0.02em">
-        진천고등학교
-      </h1>
- 
-      <!-- 부제 -->
-      <p style="font-size:14px;color:#66627A;margin-bottom:2.5rem;line-height:1.6;font-weight:500">
-        고교학점제 이수 가이드북<br>
-        <span style="font-size:12px;color:#9994AE">3학년(2027학년도) · 2022 개정 교육과정</span>
-      </p>
- 
-      <!-- 구분선 -->
+      <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCADEAMgDASIAAhEBAxEB/8QAGwABAAMBAQEBAAAAAAAAAAAAAAQFBgMCAQf/xABFEAABAwIEAgYGBwYGAwAAAAABAAIDBBEFEiExBhNBUWEiMnGBkaEUI0JSscHR8BUzNGKS4fEHJENTcqLSFiQ1Y4L/xAAZAQEBAQEBAQAAAAAAAAAAAAAAAQIDBAX/xAAlEQEBAAIBBQACAgMAAAAAAAAAAQIREiExA0FRYROBsfD/2gAMAwEAAhEDEQA/AP2CvPbcHN1urzupmVx2R24nCjimeTCJAeQbbbLa7k3BuCumkW6ojEqmKGfKhd2bpDqRp3q3VWlqijUKtJy1kDmLf1iRkqn3VCnVb4DIPt9PaTnYzqXdO0fCPO6lV7bZ4aV2l+e0bUi24dRPUijFGfvZWdTjtzNd+0/T39eMI1bW1lTFnS0uXZSqzqcE9kVBVVBuiIiAiIgIiICIiAiIgIiICIiAiIgK4bOy+4N6DFXV5ue9YpbEGK0VpJzwvLg5+5vq4dPz8q4OacXBz6LGujFkLn3y+mue8e9RrnvZrmIiKFJpVzlPVyCW5znfSHIdFOeaKkLnPdJO7YNG5K5VX7bLBF9hFJfiBOfzCo+Y5r5DxXT6bTl73WKlVqhFG6pLvZ3nQclIpsPzE8yYmNIGmmpHksOBWyOJ1RF/UTX6E9F7n8LbqHnFWzBMqCKO7nMabjM42AJ67K36LUG4SvRuZhW3k/xHZf53XNb6OFV3B7sRy+Bc5KXRV8kphZJJa5pNu8AqzHTBo4uA6XJXF3c3RxcqlxYe8BXH4ZWiYCRlr9l21C5lHidqZWr3q7JdlEPRFYiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiIHVqZwLHMaCQ4i1wtGJ8QBw6Y0lFU5xLlnZz2MIzNFwL367LY6nGnzUdVbqSSF0ZnFVYqipqUlrqmFvtCqQJblmkPQbdLf8ApTRYfFiQiabvqYnEf5AzW1Hj4W8VpxHB3QzxBhvHPbMb9WE2IPf9VkYjVuaQBsTa4XSpFovDdVKC5t7gqvhW0aB2OVQnD3VEjIYwZHkjRoJuQtGFQS1srMl8oGpNrhaPZqbDo3zybNFr/D9VSmvU9NGHy3sDdxXqKiMJqH3F7E2AF+C0cMomz1LrWcGbkrWhsEWTpbfUqnOKUiXLXiC6QdmMHbUb+i5t1PVTX20N3E2G1rLuSEDxVuL4g8XZE6u9QC1hbqVZq7JsL42Ek7JkdKJHkDxVjAaxlPGa5zSZiNB1C0lO2z9+/nXFpvWLhbOp1KzNOLEE5Wkq3E0iLgkGzgCOYWIxcmaTtceIXO5kxjVZ7L2AxCqpVKuqVqnXtRERdciIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgJ1REBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAdNqIg9WouoiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiD/2Q==" alt="로고" style="width:120px;height:120px;border-radius:50%;object-fit:cover;box-shadow:0 8px 32px rgba(60,52,137,0.18);border:4px solid #EEEDFE;margin-bottom:1.5rem;display:block;margin-left:auto;margin-right:auto;animation:logoIn 0.8s cubic-bezier(0.34,1.56,0.64,1) both">
+      <div style="font-size:11px;font-weight:600;color:#9994AE;letter-spacing:0.15em;margin-bottom:8px;text-transform:uppercase">JINCHEON HIGH SCHOOL · SINCE 1977</div>
+      <h1 style="font-size:26px;font-weight:700;color:#1a1464;margin-bottom:6px;letter-spacing:-0.02em">진천고등학교</h1>
+      <p style="font-size:14px;color:#66627A;margin-bottom:2.5rem;line-height:1.6;font-weight:500">고교학점제 이수 가이드북<br><span style="font-size:12px;color:#9994AE">3학년(2027학년도) · 2022 개정 교육과정</span></p>
       <div style="width:40px;height:2px;background:linear-gradient(90deg,#3C3489,#7F77DD);margin:0 auto 2rem;border-radius:2px"></div>
- 
-      <!-- 입장 버튼 -->
-      <button onclick="enterGuide()" style="
-        background:linear-gradient(135deg,#1a1464 0%,#3C3489 100%);
-        color:#fff;
-        border:none;
-        border-radius:16px;
-        padding:16px 48px;
-        font-size:16px;
-        font-weight:700;
-        cursor:pointer;
-        box-shadow:0 8px 24px rgba(60,52,137,0.30);
-        letter-spacing:0.02em;
-        transition:all 0.2s;
-        position:relative;
-        overflow:hidden;
-      "
-      onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 32px rgba(60,52,137,0.40)'"
-      onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 8px 24px rgba(60,52,137,0.30)'"
-      >
-        가이드북 입장하기
-        <span style="margin-left:8px;font-size:14px">→</span>
-      </button>
- 
-      <!-- 하단 안내 -->
-      <p style="font-size:12px;color:#9994AE;margin-top:1.5rem;font-weight:500">
-        과목 탐색 · 선이수 안내 · 학점 계산기 포함
-      </p>
+      <button onclick="enterGuide()" style="background:linear-gradient(135deg,#1a1464 0%,#3C3489 100%);color:#fff;border:none;border-radius:16px;padding:16px 48px;font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 8px 24px rgba(60,52,137,0.30);letter-spacing:0.02em;transition:all 0.2s" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">가이드북 입장하기 →</button>
+      <p style="font-size:12px;color:#9994AE;margin-top:1.5rem;font-weight:500">과목 탐색 · 관련 학과/직업 · 선이수 안내 · 학점 계산기 포함</p>
     </div>
   </div>
- 
   <style>
-    @keyframes fadeUp {
-      from { opacity:0; transform:translateY(24px); }
-      to   { opacity:1; transform:translateY(0); }
-    }
-    @keyframes logoIn {
-      from { opacity:0; transform:scale(0.6); }
-      to   { opacity:1; transform:scale(1); }
-    }
-    @keyframes fadeOut {
-      from { opacity:1; transform:scale(1); }
-      to   { opacity:0; transform:scale(1.04); pointer-events:none; }
-    }
-    #intro-screen.leaving {
-      animation: fadeOut 0.45s ease forwards;
-    }
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes logoIn{from{opacity:0;transform:scale(0.6)}to{opacity:1;transform:scale(1)}}
+    @keyframes fadeOut{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(1.04);pointer-events:none}}
+    #intro-screen.leaving{animation:fadeOut 0.45s ease forwards}
   </style>
- 
-  <script>
-    function enterGuide() {
-      const screen = document.getElementById('intro-screen');
-      screen.classList.add('leaving');
-      setTimeout(() => { screen.style.display = 'none'; }, 450);
-    }
-  </script>
+  <script>function enterGuide(){const s=document.getElementById('intro-screen');s.classList.add('leaving');setTimeout(()=>{s.style.display='none'},450)}</script>
  
   <h2 class="sr-only">진천고등학교 3학년(2027) 고교학점제 이수 가이드북</h2>
   <div style="position:relative">
- 
     <div class="splash">
-      <!-- 배경 워터마크 로고 -->
-      <img class="splash-bg-logo" src="data:image/png;base64,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" alt="">
-      <!-- 메인 로고 -->
-      <img class="splash-logo" src="data:image/png;base64,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" alt="진천고등학교 로고">
       <div class="splash-school">진천고등학교 · JINCHEON HIGH SCHOOL · SINCE 1977</div>
       <div class="splash-title">고교학점제 이수 가이드북</div>
       <div class="splash-sub">3학년(2027학년도) · 2022 개정 교육과정<br>학기별 이수학점을 확인하고 설계해보세요</div>
@@ -281,10 +180,10 @@
       <div id="s1" class="sem-page active">
         <div class="section-label">학교 지정과목 (기본 이수)</div>
         <div class="designated-grid">
-          <div class="card c-kor fixed-subject-card" onclick="openModal('화법과 언어','국어 · 일반 · 4학점','5등급','다양한 담화 및 국어 자료를 탐구하여 화법과 언어에 대한 지식을 갖추고, 이를 바탕으로 일상 및 학업 상황에서 비판적·창의적으로 소통하는 능력을 기르는 일반 선택 과목입니다.',[],true)"><div class="type-tag">일반</div><h4>화법과 언어</h4><p>국어 · 4학점</p></div>
-          <div class="card c-math fixed-subject-card" onclick="openModal('확률과 통계','수학 · 일반 · 4학점','5등급','경우의 수, 확률, 통계의 개념과 원리를 탐구합니다. 불확실성이 내포된 현상을 수학적으로 모델링하고 통계적으로 추론하여 합리적으로 의사결정하는 역량을 함양하는 과목입니다.',[],true)"><div class="type-tag">일반</div><h4>확률과 통계</h4><p>수학 · 4학점</p></div>
-          <div class="card c-eng fixed-subject-card" onclick="openModal('영어 독해와 작문','영어 · 일반 · 4학점','5등급','다양한 주제의 영어 텍스트를 깊이 있게 읽고, 이를 바탕으로 자신의 생각과 의견을 논리적으로 구성하여 영어로 표현하는 독해 및 작문 능력을 통합적으로 기릅니다.',[],true)"><div class="type-tag">일반</div><h4>영어 독해와 작문</h4><p>영어 · 4학점</p></div>
-          <div class="card c-pe fixed-subject-card" onclick="openModal('스포츠 문화','체육 · 진로 · 1학점','3단계','스포츠의 역사와 윤리, 스포츠가 현대 사회 및 대중문화에 미치는 영향을 다각도로 탐구합니다.',[],true)"><div class="type-tag">진로</div><h4>스포츠 문화</h4><p>체육 · 1학점</p></div>
+          <div class="card c-kor fixed-subject-card" onclick="openModal('화법과 언어','국어 · 일반 · 4학점','5등급','다양한 담화 및 국어 자료를 탐구하여 화법과 언어에 대한 지식을 갖추고, 이를 바탕으로 일상 및 학업 상황에서 비판적·창의적으로 소통하는 능력을 기르는 일반 선택 과목입니다.','국어국문학과, 국어교육과, 신문방송학과, 미디어커뮤니케이션학과, 언어학과, 광고홍보학과, 통번역학과 등','언론인, 중등교사, 강사, 상담 전문가, 프로듀서, 통역사, 언어학 연구원, 언어 치료사 등',[],true)"><div class="type-tag">일반</div><h4>화법과 언어</h4><p>국어 · 4학점</p></div>
+          <div class="card c-math fixed-subject-card" onclick="openModal('확률과 통계','수학 · 일반 · 4학점','5등급','경우의 수, 확률, 통계의 개념과 원리를 탐구합니다. 불확실성이 내포된 현상을 수학적으로 모델링하고 통계적으로 추론하여 합리적으로 의사결정하는 역량을 함양하는 과목입니다.','사회과학계열, 자연과학계열, 공학계열 학과 전체','경제학자, 대기과학자, 데이터과학자, 보험계리사, 신약개발연구원, 스포츠기록 분석원, 임상의학연구원, 투자분석가, 통계학자 등',[],true)"><div class="type-tag">일반</div><h4>확률과 통계</h4><p>수학 · 4학점</p></div>
+          <div class="card c-eng fixed-subject-card" onclick="openModal('영어 독해와 작문','영어 · 일반 · 4학점','5등급','다양한 주제의 영어 텍스트를 깊이 있게 읽고, 이를 바탕으로 자신의 생각과 의견을 논리적으로 구성하여 영어로 표현하는 독해 및 작문 능력을 통합적으로 기릅니다.','영어영문학과, 영어통번역학과, 영어학과, 국제관계학과, 미국학과','영어 통역가, 번역가, 문화유산해설사, 여행 안내원 등',[],true)"><div class="type-tag">일반</div><h4>영어 독해와 작문</h4><p>영어 · 4학점</p></div>
+          <div class="card c-pe fixed-subject-card" onclick="openModal('스포츠 문화','체육 · 진로 · 1학점','3단계','스포츠의 역사와 윤리, 스포츠가 현대 사회 및 대중문화에 미치는 영향을 다각도로 탐구합니다.','체육교육과, 체육학과, 글로벌스포츠산업학부, 레저스포츠학과, 스포츠학과, 생활체육학과, 사회체육학과, 스포츠산업과학부 등','체육교사, 체육교수, 생활체육 지도자, 스포츠강사, 스포츠마케터, 스포츠에이전트, 레크리에이션지도자 등',[],true)"><div class="type-tag">진로</div><h4>스포츠 문화</h4><p>체육 · 1학점</p></div>
         </div>
         <div class="divider"></div>
         <div class="section-label">학생 선택과목</div>
@@ -292,39 +191,39 @@
         <div class="group-box" data-max="1">
           <div class="group-header"><div class="group-title">국어 · 수학 · 영어</div><span class="group-badge badge-pick1">6과목 중 택1</span></div>
           <div class="cards">
-            <div class="card c-kor" onclick="openModal('문학과 영상','국어 · 진로 · 3학점','5등급','문학 작품과 영상 매체(영화, 드라마 등)의 관계를 이해하고, 문학이 영상으로 어떻게 매체 변환되는지 비판적으로 분석·감상하며 창조적인 콘텐츠를 기획해보는 과목입니다.',[{name:'문학',type:'권장'}])"><div class="type-tag">진로</div><h4>문학과 영상</h4><p>국어 · 3학점</p></div>
-            <div class="card c-kor" onclick="openModal('독서 토론과 글쓰기','국어 · 융합 · 3학점','5등급_등급X','인문, 사회, 과학 등 다양한 분야의 텍스트를 읽고, 쟁점에 대해 토론하며 자신의 입장을 논리적인 글로 작성하는 과정을 통해 비판적 사고력과 융합적 문제 해결력을 기릅니다.',[{name:'독서와 작문',type:'권장'}])"><div class="type-tag">융합</div><h4>독서 토론과 글쓰기</h4><p>국어 · 3학점</p></div>
-            <div class="card c-math" onclick="openModal('미적분Ⅱ','수학 · 진로 · 3학점','5등급','수열의 극한, 여러 가지 함수의 미분법과 적분법 등 해석학의 심화 내용을 다룹니다. 자연과학 및 공학 계열 진학에 필수적인 고급 수학 역량을 다집니다.',[{name:'대수',type:'필수'},{name:'미적분Ⅰ',type:'필수'}])"><div class="type-tag">진로</div><h4>미적분Ⅱ</h4><p>수학 · 3학점</p></div>
-            <div class="card c-math" onclick="openModal('수학과제 탐구','수학 · 융합 · 3학점','5등급_등급X','학생 스스로 수학적 관심사에 따라 탐구 주제를 선정하고, 자료를 수집·분석하여 문제를 해결한 뒤 결과 보고서를 작성하고 발표하는 프로젝트 중심의 자기주도적 과목입니다.',[])"><div class="type-tag">융합</div><h4>수학과제 탐구</h4><p>수학 · 3학점</p></div>
-            <div class="card c-eng" onclick="openModal('영미 문학 읽기','영어 · 진로 · 3학점','5등급','영어로 쓰인 소설, 시, 희곡 등 다양한 영미 문학 작품을 원문으로 감상합니다. 문학적 소양을 넓히고 심도 있는 영어 독해 능력을 함양합니다.',[])"><div class="type-tag">진로</div><h4>영미 문학 읽기</h4><p>영어 · 3학점</p></div>
-            <div class="card c-eng" onclick="openModal('심화 영어 독해와 작문','영어 · 진로 · 3학점','5등급','일반 과목보다 한 차원 높은 수준의 학술적이고 전문적인 텍스트를 읽고, 비판적 사고를 바탕으로 자신의 견해를 영어로 명확하고 논리적으로 표현하는 고급 작문 역량을 기릅니다.',[{name:'영어 독해와 작문',type:'권장'}])"><div class="type-tag">진로</div><h4>심화 영어 독해와 작문</h4><p>영어 · 3학점</p></div>
+            <div class="card c-kor" onclick="openModal('문학과 영상','국어 · 진로 · 3학점','5등급','문학 작품과 영상 매체(영화, 드라마 등)의 관계를 이해하고, 문학이 영상으로 어떻게 매체 변환되는지 비판적으로 분석·감상하며 창조적인 콘텐츠를 기획해보는 과목입니다.','국어국문학과, 문예창작과, 신문방송학과, 미디어커뮤니케이션학과, 언어학과, 광고홍보학과, 국어교육과 등','작가, 언론인, 중등교사, 인문사회계열교수, 평론가, 프로듀서, 통역사, 문헌학자 등',[{name:'문학',type:'권장'}])"><div class="type-tag">진로</div><h4>문학과 영상</h4><p>국어 · 3학점</p></div>
+            <div class="card c-kor" onclick="openModal('독서 토론과 글쓰기','국어 · 융합 · 3학점','5등급','인문, 사회, 과학 등 다양한 분야의 텍스트를 읽고, 쟁점에 대해 토론하며 자신의 입장을 논리적인 글로 작성하는 과정을 통해 비판적 사고력과 융합적 문제 해결력을 기릅니다.','국어국문학과, 국어교육과, 신문방송학과, 미디어커뮤니케이션학과, 언어학과, 문헌정보학과, 문예창작과 등','언론인, 중등교사, 독서지도사, 출판물 편집자, 평론가, 프로듀서, 방송 작가 등',[{name:'독서와 작문',type:'권장'}])"><div class="type-tag">융합</div><h4>독서 토론과 글쓰기</h4><p>국어 · 3학점</p></div>
+            <div class="card c-math" onclick="openModal('미적분Ⅱ','수학 · 진로 · 3학점','5등급','수열의 극한, 여러 가지 함수의 미분법과 적분법 등 해석학의 심화 내용을 다룹니다. 자연과학 및 공학 계열 진학에 필수적인 고급 수학 역량을 다집니다.','사회과학계열, 자연과학계열, 공학계열 학과 전체','경제학자, 기계공학자, 물리학자, 생명공학자, 수학자, 전기전자공학자, 컴퓨터공학자, 통계학자, 화학공학자 등',[{name:'대수',type:'필수'},{name:'미적분Ⅰ',type:'필수'}])"><div class="type-tag">진로</div><h4>미적분Ⅱ</h4><p>수학 · 3학점</p></div>
+            <div class="card c-math" onclick="openModal('수학과제 탐구','수학 · 융합 · 3학점','5등급','학생 스스로 수학적 관심사에 따라 탐구 주제를 선정하고, 자료를 수집·분석하여 문제를 해결한 뒤 결과 보고서를 작성하고 발표하는 프로젝트 중심의 자기주도적 과목입니다.','사회과학계열, 자연과학계열, 공학계열 학과 전체','사회, 자연, 과학 전반의 활동 분야',[])"><div class="type-tag">융합</div><h4>수학과제 탐구</h4><p>수학 · 3학점</p></div>
+            <div class="card c-eng" onclick="openModal('영미 문학 읽기','영어 · 진로 · 3학점','5등급','영어로 쓰인 소설, 시, 희곡 등 다양한 영미 문학 작품을 원문으로 감상합니다. 문학적 소양을 넓히고 심도 있는 영어 독해 능력을 함양합니다.','영어영문학과, 영문학부, 영미언어문화학과, 영어산업학과, 영어 통번역학과 등','작가, 기자, PD, 아나운서, 무역 담당자, 출판물 기획자, 호텔 지배인, 통번역가 등',[])"><div class="type-tag">진로</div><h4>영미 문학 읽기</h4><p>영어 · 3학점</p></div>
+            <div class="card c-eng" onclick="openModal('심화 영어 독해와 작문','영어 · 진로 · 3학점','5등급','일반 과목보다 한 차원 높은 수준의 학술적이고 전문적인 텍스트를 읽고, 비판적 사고를 바탕으로 자신의 견해를 영어로 명확하고 논리적으로 표현하는 고급 작문 역량을 기릅니다.','영미어문학부, 영미언어문화학과, 영어통상통역학과, 글로벌커뮤니케이션 영어전공 등','인문사회계열교수, 외교관, 인문과학연구원, 동시통역사, 번역가, 외국인회사 등',[{name:'영어 독해와 작문',type:'권장'}])"><div class="type-tag">진로</div><h4>심화 영어 독해와 작문</h4><p>영어 · 3학점</p></div>
           </div>
         </div>
  
         <div class="group-box" data-max="3">
           <div class="group-header"><div class="group-title">사회 · 과학</div><span class="group-badge badge-pick3">10과목 중 택3</span></div>
           <div class="cards">
-            <div class="card c-soc" onclick="openModal('도시의 미래 탐구','사회 · 진로 · 3학점','5등급','현대 도시의 공간적 구조와 문제점을 지리적 관점에서 분석하고, 스마트 시티, 친환경 도시 등 지속 가능한 미래 도시의 발전 방향을 탐구합니다.',[{name:'세계시민과 지리',type:'권장'}])"><div class="type-tag">진로</div><h4>도시의 미래 탐구</h4><p>사회 · 3학점</p></div>
-            <div class="card c-soc" onclick="openModal('한국지리 탐구','사회 · 진로 · 3학점','5등급','우리나라 국토의 자연환경과 인문환경을 심도 있게 이해하고, 지역 불균형, 인구 변화 등 국가적 현안을 지리적 관점에서 종합적으로 분석합니다.',[{name:'세계시민과 지리',type:'권장'}])"><div class="type-tag">진로</div><h4>한국지리 탐구</h4><p>사회 · 3학점</p></div>
-            <div class="card c-soc" onclick="openModal('동아시아 역사 기행','사회 · 진로 · 3학점','5등급','한국, 중국, 일본 등 동아시아 지역의 역사적 전개 과정과 문화 교류 양상을 탐구하여, 동아시아의 평화와 공존 방안을 모색합니다.',[{name:'세계사',type:'권장'}])"><div class="type-tag">진로</div><h4>동아시아 역사 기행</h4><p>사회 · 3학점</p></div>
-            <div class="card c-soc" onclick="openModal('법과 사회','사회 · 진로 · 3학점','5등급','민주 시민으로서 갖추어야 할 법적 지식과 소양을 기릅니다. 헌법, 민법, 형법 등의 기초 법리를 배우고, 실생활에서 발생하는 다양한 법적 분쟁 및 권리 구제 과정을 학습합니다.',[])"><div class="type-tag">진로</div><h4>법과 사회</h4><p>사회 · 3학점</p></div>
-            <div class="card c-soc" onclick="openModal('인문학과 윤리','사회 · 진로 · 3학점','5등급','문학, 철학, 역사, 예술 등 인문학적 텍스트에 담긴 윤리적 의미를 탐구하고, 인간 삶의 본질적 가치와 도덕적 딜레마를 심도 있게 성찰하는 윤리 교과 심화 과목입니다.',[{name:'현대사회와 윤리',type:'권장'},{name:'윤리와 사상',type:'권장'}])"><div class="type-tag">진로</div><h4>인문학과 윤리</h4><p>사회 · 3학점</p></div>
-            <div class="card c-sci" onclick="openModal('전자기와 양자','과학 · 진로 · 3학점','5등급','전자기장, 맥스웰 방정식 등 전자기학의 원리와 현대 물리학의 기초가 되는 양자역학의 기본 개념을 학습하여 첨단 과학기술의 바탕을 이해하는 과목입니다.',[{name:'물리학',type:'권장'}])"><div class="type-tag">진로</div><h4>전자기와 양자</h4><p>과학 · 3학점</p></div>
-            <div class="card c-sci" onclick="openModal('물질과 에너지','과학 · 진로 · 3학점','5등급','물질의 결합 구조와 성질, 화학 반응에 수반되는 열과 에너지 변화 등을 깊이 있게 탐구하여, 화학 공학 및 신소재 분야로 진학하기 위한 기초 지식을 다집니다.',[{name:'화학',type:'권장'}])"><div class="type-tag">진로</div><h4>물질과 에너지</h4><p>과학 · 3학점</p></div>
-            <div class="card c-sci" onclick="openModal('세포와 물질대사','과학 · 진로 · 3학점','5등급','생명 현상의 기본 단위인 세포의 미세 구조와 유기적 기능, 광합성과 세포 호흡 등 물질대사 메커니즘을 심화 탐구하는 생명과학 과목입니다.',[{name:'생명과학',type:'권장'}])"><div class="type-tag">진로</div><h4>세포와 물질대사</h4><p>과학 · 3학점</p></div>
-            <div class="card c-sci" onclick="openModal('지구시스템과학','과학 · 진로 · 3학점','5등급','지구를 구성하는 기권, 수권, 지권, 생물권의 상호작용을 시스템적 관점에서 이해하고, 대기와 해양의 순환, 지구의 역사와 우주 환경을 종합적으로 탐구하는 과목입니다.',[{name:'지구과학',type:'권장'}])"><div class="type-tag">진로</div><h4>지구시스템과학</h4><p>과학 · 3학점</p></div>
-            <div class="card c-sci" onclick="openModal('융합과학 탐구','과학 · 융합 · 3학점','5등급_등급X','물리, 화학, 생명과학, 지구과학 등 과학의 분절적 지식을 융합하여, 첨단 기술 및 실생활 관련 복합적인 주제를 선정하고 과학적 탐구 방법을 적용해 문제를 해결해 보는 프로젝트형 과목입니다.',[])"><div class="type-tag">융합</div><h4>융합과학 탐구</h4><p>과학 · 3학점</p></div>
+            <div class="card c-soc" onclick="openModal('도시의 미래 탐구','사회 · 진로 · 3학점','5등급','현대 도시의 공간적 구조와 문제점을 지리적 관점에서 분석하고, 스마트 시티, 친환경 도시 등 지속 가능한 미래 도시의 발전 방향을 탐구합니다.','지리학, 지역학, 도시사회학, 부동산학, 환경학, 도시계획학, 도시행정학, 도시공학, 교통공학, 건축학, 토목공학 등','건축사, 도시 및 교통 설계 전문가, 도시 재생 전문가, 사진작가, 스마트 도시 전문가, 환경 컨설턴트, 부동산 전문가 등',[{name:'세계시민과 지리',type:'권장'}])"><div class="type-tag">진로</div><h4>도시의 미래 탐구</h4><p>사회 · 3학점</p></div>
+            <div class="card c-soc" onclick="openModal('한국지리 탐구','사회 · 진로 · 3학점','5등급','우리나라 국토의 자연환경과 인문환경을 심도 있게 이해하고, 지역 불균형, 인구 변화 등 국가적 현안을 지리적 관점에서 종합적으로 분석합니다.','행정학과, 도시계획학과, 도시공학과, 정치외교학과, 부동산학과, 건축학과, 관광학과, 통계학과, 공간정보학과 등','도시계획가, 공간정보데이터분석가, 시정개발연구원, 부동산정책전문가, 여행상품개발자 등',[{name:'세계시민과 지리',type:'권장'}])"><div class="type-tag">진로</div><h4>한국지리 탐구</h4><p>사회 · 3학점</p></div>
+            <div class="card c-soc" onclick="openModal('동아시아 역사 기행','사회 · 진로 · 3학점','5등급','한국, 중국, 일본 등 동아시아 지역의 역사적 전개 과정과 문화 교류 양상을 탐구하여, 동아시아의 평화와 공존 방안을 모색합니다.','신문방송학과, 정치외교학과, 국제학부, 국제관계학과, 사회학과, 역사학부, 사학과, 동양사학과, 역사교육과 등','언론인, 콘텐츠 크리에이터, 인문·사회과학 연구원, 대학교수, 교사, 공무원, 외교관, 국제무역사무원, 국제회의전문가 등',[{name:'세계사',type:'권장'}])"><div class="type-tag">진로</div><h4>동아시아 역사 기행</h4><p>사회 · 3학점</p></div>
+            <div class="card c-soc" onclick="openModal('법과 사회','사회 · 진로 · 3학점','5등급','민주 시민으로서 갖추어야 할 법적 지식과 소양을 기릅니다. 헌법, 민법, 형법 등의 기초 법리를 배우고, 실생활에서 발생하는 다양한 법적 분쟁 및 권리 구제 과정을 학습합니다.','법학과, 자유전공학부, 세무학과, 경찰행정학과, 정치외교학과, 행정학과, 사회학과, 사회복지학과 등','판사, 검사, 변호사, 법률사무원, 법무사, 세무사, 관세사, 감정평가사, 부동산중개인, 손해사정사 등',[])"><div class="type-tag">진로</div><h4>법과 사회</h4><p>사회 · 3학점</p></div>
+            <div class="card c-soc" onclick="openModal('인문학과 윤리','사회 · 진로 · 3학점','5등급','문학, 철학, 역사, 예술 등 인문학적 텍스트에 담긴 윤리적 의미를 탐구하고, 인간 삶의 본질적 가치와 도덕적 딜레마를 심도 있게 성찰하는 윤리 교과 심화 과목입니다.','윤리교육과, 철학과, 사회학과, 정치외교학과, 유학·동양학과, 종교학과, 문화인류학과, 상담심리학과 등','중등교사, 대학교수, 광고 및 홍보 전문가, 마케팅 전문가, 작가, 언론인, 인문·사회과학 연구원, 큐레이터 등',[{name:'현대사회와 윤리',type:'권장'},{name:'윤리와 사상',type:'권장'}])"><div class="type-tag">진로</div><h4>인문학과 윤리</h4><p>사회 · 3학점</p></div>
+            <div class="card c-sci" onclick="openModal('전자기와 양자','과학 · 진로 · 3학점','5등급','전자기장, 맥스웰 방정식 등 전자기학의 원리와 현대 물리학의 기초가 되는 양자역학의 기본 개념을 학습하여 첨단 과학기술의 바탕을 이해하는 과목입니다.','물리학과, 물리교육과, 지질·지구물리학부, 기계·전기·전자·정보·건축·산업·신소재·컴퓨터·나노·화학공학 계열 등','국내외 국공립연구원, 전자·반도체·디스플레이 연구원, 기계·우주항공·자동차·정보통신·컴퓨터·신소재 공학자 등',[{name:'물리학',type:'권장'}])"><div class="type-tag">진로</div><h4>전자기와 양자</h4><p>과학 · 3학점</p></div>
+            <div class="card c-sci" onclick="openModal('물질과 에너지','과학 · 진로 · 3학점','5등급','물질의 결합 구조와 성질, 화학 반응에 수반되는 열과 에너지 변화 등을 깊이 있게 탐구하여, 화학 공학 및 신소재 분야로 진학하기 위한 기초 지식을 다집니다.','화학과, 화학공학과, 화학생명공학과, 생화학과, 의예과, 약학과, 간호학과, 식품영양학과, 정밀화학과, 나노공학과 등','화학연구원, 자연과학연구원, 약사 및 한약사, 의사, 간호사, 화학제품제조원, 신재생에너지전문가 등',[{name:'화학',type:'권장'}])"><div class="type-tag">진로</div><h4>물질과 에너지</h4><p>과학 · 3학점</p></div>
+            <div class="card c-sci" onclick="openModal('세포와 물질대사','과학 · 진로 · 3학점','5등급','생명 현상의 기본 단위인 세포의 미세 구조와 유기적 기능, 광합성과 세포 호흡 등 물질대사 메커니즘을 심화 탐구하는 생명과학 과목입니다.','생명과학과, 생명공학과, 생명자원학과, 생물교육과, 생물학과, 생화학과, 식품공학과, 약학과, 유전공학과 등','바이오에너지 연구원, 생명과학연구원, 생물학 연구원, 수산학연구원, 식품공학기술자, 약학연구원 등',[{name:'생명과학',type:'권장'}])"><div class="type-tag">진로</div><h4>세포와 물질대사</h4><p>과학 · 3학점</p></div>
+            <div class="card c-sci" onclick="openModal('지구시스템과학','과학 · 진로 · 3학점','5등급','지구를 구성하는 기권, 수권, 지권, 생물권의 상호작용을 시스템적 관점에서 이해하고, 대기와 해양의 순환, 지구의 역사와 우주 환경을 종합적으로 탐구하는 과목입니다.','지구과학교육과, 과학교육학부, 지구환경과학과, 지구시스템과학과, 대기과학과, 지구해양학과, 에너지자원공학과 등','과학교사, 지질연구원, 자연계열교수, 기상연구원, 환경연구원, 자원개발 관련 종사원 등',[{name:'지구과학',type:'권장'}])"><div class="type-tag">진로</div><h4>지구시스템과학</h4><p>과학 · 3학점</p></div>
+            <div class="card c-sci" onclick="openModal('융합과학 탐구','과학 · 융합 · 3학점','5등급_등급X','물리, 화학, 생명과학, 지구과학 등 과학의 분절적 지식을 융합하여, 첨단 기술 및 실생활 관련 복합적인 주제를 선정하고 과학적 탐구 방법을 적용해 문제를 해결해 보는 프로젝트형 과목입니다.','물리학과, 기계공학과, 전자공학과, 고분자공학과, 나노화학공학과, 바이오나노화학과, 응용화학과, 생화학과, 생명과학과 등','물리연구원, 기계공학자, 전자공학자, 화학연구원, 신약개발연구원, 에너지 연구원, 나노공학기술자, 생명과학연구원 등',[])"><div class="type-tag">융합</div><h4>융합과학 탐구</h4><p>과학 · 3학점</p></div>
           </div>
         </div>
  
         <div class="group-box" data-max="1">
           <div class="group-header"><div class="group-title">기술·가정/정보 · 제2외국어/한문</div><span class="group-badge badge-pick1">5과목 중 택1</span></div>
           <div class="cards">
-            <div class="card c-tech" onclick="openModal('생활과학 탐구','기술·가정 · 진로 · 3학점','5등급','의식주 생활, 소비, 가족 관계 등 일상생활의 다양한 현상을 과학적 원리와 연계하여 탐구하고, 실천적인 문제 해결 및 관리 능력을 기르는 진로 탐색 과목입니다.',[])"><div class="type-tag">진로</div><h4>생활과학 탐구</h4><p>기술·가정 · 3학점</p></div>
-            <div class="card c-tech" onclick="openModal('데이터 과학','정보 · 진로 · 3학점','5등급','4차 산업혁명 시대의 핵심인 데이터를 효율적으로 수집, 처리, 시각화, 분석하는 원리와 프로그래밍 기법을 학습하여 데이터 기반의 논리적 의사결정 능력을 기릅니다.',[{name:'정보',type:'권장'}])"><div class="type-tag">진로</div><h4>데이터 과학</h4><p>정보 · 3학점</p></div>
-            <div class="card c-lang" onclick="openModal('독일어권 문화','제2외국어 · 융합 · 3학점','5등급_등급X','기초적인 언어 학습을 바탕으로 독일어권 국가들의 역사, 전통, 대중문화, 사회 제도를 폭넓게 탐구하며 세계 시민으로서의 문화적 다양성과 상호 존중 태도를 함양합니다.',[])"><div class="type-tag">융합</div><h4>독일어권 문화</h4><p>제2외국어 · 3학점</p></div>
-            <div class="card c-lang" onclick="openModal('중국 문화','제2외국어 · 융합 · 3학점','5등급_등급X','중국어 학습과 연계하여 중국의 고유한 역사, 지리, 전통 예술, 현대 사회 양상을 종합적으로 탐구하고, 이웃 국가에 대한 이해의 폭을 넓히는 문화 융합 과목입니다.',[])"><div class="type-tag">융합</div><h4>중국 문화</h4><p>제2외국어 · 3학점</p></div>
-            <div class="card c-lang" onclick="openModal('한문 고전 읽기','한문 · 진로 · 3학점','5등급','한문으로 기록된 다양한 고전 문헌을 원전으로 강독하고 해석하여, 전통문화의 가치를 계승하고 현대 사회에 필요한 인문학적 통찰력과 삶의 지혜를 배웁니다.',[])"><div class="type-tag">진로</div><h4>한문 고전 읽기</h4><p>한문 · 3학점</p></div>
+            <div class="card c-tech" onclick="openModal('생활과학 탐구','기술·가정 · 진로 · 3학점','5등급','의식주 생활, 소비, 가족 관계 등 일상생활의 다양한 현상을 과학적 원리와 연계하여 탐구하고, 실천적인 문제 해결 및 관리 능력을 기르는 진로 탐색 과목입니다.','생활복지주거학과, 소비자아동학과, 식품공학과, 식품영양학과, 아동가족학과, 주거환경학과, 의류학과, 패션디자인과, 심리·상담과 등','보육교사, 사회복지사, 샵마스터, 소비자전문상담사, 식공간연출가, 식품기사, 식품연구원, 영양교사, 영양사 등',[])"><div class="type-tag">진로</div><h4>생활과학 탐구</h4><p>기술·가정 · 3학점</p></div>
+            <div class="card c-tech" onclick="openModal('데이터 과학','정보 · 진로 · 3학점','5등급','4차 산업혁명 시대의 핵심인 데이터를 효율적으로 수집, 처리, 시각화, 분석하는 원리와 프로그래밍 기법을 학습하여 데이터 기반의 논리적 의사결정 능력을 기릅니다.','컴퓨터공학과, 컴퓨터과학과, 소프트웨어학과, 인공지능학과, 데이터과학과, 전기·정보학과, 빅데이터 분석과, 정보보호과, 뇌인지과학융합과 등','인공지능 전문가, 데이터 과학자, 시스템 개발 전문가, 컴퓨터 프로그래머, 정보보호전문가, 게임프로그래머, 반도체 설계 등',[{name:'정보',type:'권장'}])"><div class="type-tag">진로</div><h4>데이터 과학</h4><p>정보 · 3학점</p></div>
+            <div class="card c-lang" onclick="openModal('독일어권 문화','제2외국어 · 융합 · 3학점','5등급','기초적인 언어 학습을 바탕으로 독일어권 국가들의 역사, 전통, 대중문화, 사회 제도를 폭넓게 탐구하며 세계 시민으로서의 문화적 다양성과 상호 존중 태도를 함양합니다.','독어독문학과, 독일어교육전공, 독일어통번역학과, 유럽학부, 서양어대학, 국제학부, 언어학과, 글로벌경영학, 글로벌경제학 등','언어학자, 문학 연구가, 특파원, 국제관계 전문가, 기업 및 공공기관 내 지역 전문가, 무역전문가, 항공업 종사자 등',[])"><div class="type-tag">융합</div><h4>독일어권 문화</h4><p>제2외국어 · 3학점</p></div>
+            <div class="card c-lang" onclick="openModal('중국 문화','제2외국어 · 융합 · 3학점','5등급','중국어 학습과 연계하여 중국의 고유한 역사, 지리, 전통 예술, 현대 사회 양상을 종합적으로 탐구하고, 이웃 국가에 대한 이해의 폭을 넓히는 문화 융합 과목입니다.','정치외교학과, 중어중문학과, 중국어교육과, 아시아학부, 유학·동양학과, 한문학과, 한문교육과, 국제학부, 언어학과 등','외교관, 국제협력기관 종사자, 언어학자, 문학 연구가, 기업 및 공공기관 내 지역 전문가, 무역전문가 등',[])"><div class="type-tag">융합</div><h4>중국 문화</h4><p>제2외국어 · 3학점</p></div>
+            <div class="card c-lang" onclick="openModal('한문 고전 읽기','한문 · 진로 · 3학점','5등급','한문으로 기록된 다양한 고전 문헌을 원전으로 강독하고 해석하여, 전통문화의 가치를 계승하고 현대 사회에 필요한 인문학적 통찰력과 삶의 지혜를 배웁니다.','법학과, 행정학과, 국어국문학과, 동양어문학과, 철학과, 사학과, 문화콘텐츠학과, 고고학과, 한문교육과, 한의예과 등','인문학 관련 교수, 고전 연구 및 번역 전문가, 학예연구사, 방송작가 등',[])"><div class="type-tag">진로</div><h4>한문 고전 읽기</h4><p>한문 · 3학점</p></div>
           </div>
         </div>
       </div>
@@ -332,7 +231,7 @@
       <div id="s2" class="sem-page">
         <div class="section-label">학교 지정과목 (기본 이수)</div>
         <div class="designated-grid">
-          <div class="card c-pe fixed-subject-card" onclick="openModal('스포츠 과학','체육 · 진로 · 1학점','3단계','스포츠와 인체 생리학, 생체 역학, 심리학 등 과학적 원리를 융합하여 운동 능력 향상 및 건강 증진의 원리를 체계적으로 탐구하고 체험하는 과목입니다.',[],true)"><div class="type-tag">진로</div><h4>스포츠 과학</h4><p>체육 · 1학점</p></div>
+          <div class="card c-pe fixed-subject-card" onclick="openModal('스포츠 과학','체육 · 진로 · 1학점','3단계','스포츠와 인체 생리학, 생체 역학, 심리학 등 과학적 원리를 융합하여 운동 능력 향상 및 건강 증진의 원리를 체계적으로 탐구하고 체험하는 과목입니다.','체육교육과, 체육학과, 스포츠과학과, 글로벌스포츠산업학부, 스포츠학과, 국제스포츠학과, 생활체육학과, 스포츠의학과 등','체육교사, 체육교수, 스포츠과학자, 생활체육 지도자, 코치, 경기심판, 스포츠강사, 운동처방사, 퍼스널트레이너 등',[],true)"><div class="type-tag">진로</div><h4>스포츠 과학</h4><p>체육 · 1학점</p></div>
         </div>
         <div class="divider"></div>
         <div class="section-label">학생 선택과목</div>
@@ -340,40 +239,40 @@
         <div class="group-box" data-max="3">
           <div class="group-header"><div class="group-title">국어 · 수학 · 영어</div><span class="group-badge badge-pick3">6과목 중 택3 · 각 4학점</span></div>
           <div class="cards">
-            <div class="card c-kor" onclick="openModal('직무 의사소통','국어 · 진로 · 4학점','5등급','졸업 후 직업 생활을 영위하는 데 필요한 실질적인 언어 능력을 함양합니다. 직무 현장에서 빈번히 요구되는 문서 작성, 발표, 협상, 면접 등의 기술을 실무 중심으로 학습합니다.',[])"><div class="type-tag">진로</div><h4>직무 의사소통</h4><p>국어 · 4학점</p></div>
-            <div class="card c-kor" onclick="openModal('매체 의사소통','국어 · 융합 · 4학점','5등급_등급X','디지털 공간과 소셜 미디어 등 다양한 매체의 특성과 언어를 이해하고, 방대한 정보를 비판적으로 수용하며 자신만의 매체 콘텐츠를 기획·생산하는 융합적 역량을 키웁니다.',[])"><div class="type-tag">융합</div><h4>매체 의사소통</h4><p>국어 · 4학점</p></div>
-            <div class="card c-math" onclick="openModal('실용 통계','수학 · 융합 · 4학점','5등급_등급X','실생활 및 다양한 학문 분야의 데이터를 통계 소프트웨어를 활용하여 수집, 시각화, 분석, 해석하는 능력을 기르며 빅데이터 시대의 데이터 리터러시를 함양합니다.',[{name:'확률과 통계',type:'필수'}])"><div class="type-tag">융합</div><h4>실용 통계</h4><p>수학 · 4학점</p></div>
-            <div class="card c-math" onclick="openModal('수학과 문화','수학 · 융합 · 4학점','5등급_등급X','수학이 미술, 음악, 건축, 철학, 역사 등 다양한 인류 문화 영역과 상호작용하며 발전해 온 과정을 탐구합니다. 수학의 예술적 가치와 인문학적 의미를 폭넓게 이해합니다.',[])"><div class="type-tag">융합</div><h4>수학과 문화</h4><p>수학 · 4학점</p></div>
-            <div class="card c-eng" onclick="openModal('실생활 영어 회화','영어 · 융합 · 4학점','5등급_등급X','일상생활, 해외여행, 기초적인 직무 상황 등에서 마주하는 다양한 맥락 속에서 자연스럽고 적절하게 의사소통할 수 있는 실용적인 영어 말하기와 듣기 능력을 기릅니다.',[])"><div class="type-tag">융합</div><h4>실생활 영어 회화</h4><p>영어 · 4학점</p></div>
-            <div class="card c-eng" onclick="openModal('세계 문화와 영어','영어 · 융합 · 4학점','5등급_등급X','영어를 학습 도구로 사용하여 세계 여러 나라의 역사, 지리, 문학, 사회 제도를 폭넓게 탐구함으로써, 글로벌 마인드를 기르고 타 문화에 대한 포용적 태도를 함양합니다.',[])"><div class="type-tag">융합</div><h4>세계 문화와 영어</h4><p>영어 · 4학점</p></div>
+            <div class="card c-kor" onclick="openModal('직무 의사소통','국어 · 진로 · 4학점','5등급','졸업 후 직업 생활을 영위하는 데 필요한 실질적인 언어 능력을 함양합니다. 직무 현장에서 빈번히 요구되는 문서 작성, 발표, 협상, 면접 등의 기술을 실무 중심으로 학습합니다.','국어국문학과, 국어교육과, 신문방송학과, 미디어커뮤니케이션학과 등','회사원, 언론인, 중등교사, 평론가, 프로듀서, 통역사 등',[])"><div class="type-tag">진로</div><h4>직무 의사소통</h4><p>국어 · 4학점</p></div>
+            <div class="card c-kor" onclick="openModal('매체 의사소통','국어 · 융합 · 4학점','5등급','디지털 공간과 소셜 미디어 등 다양한 매체의 특성과 언어를 이해하고, 방대한 정보를 비판적으로 수용하며 자신만의 매체 콘텐츠를 기획·생산하는 융합적 역량을 키웁니다.','국어국문학과, 국어교육과, 신문방송학과, 미디어커뮤니케이션학과, 언어학과, 문헌정보학과, 문예창작과 등','언론인, 방송 작가, 중등교사, 출판물 편집자, 평론가, 프로듀서, 통역사, 문헌학자 등',[])"><div class="type-tag">융합</div><h4>매체 의사소통</h4><p>국어 · 4학점</p></div>
+            <div class="card c-math" onclick="openModal('실용 통계','수학 · 융합 · 4학점','5등급','실생활 및 다양한 학문 분야의 데이터를 통계 소프트웨어를 활용하여 수집, 시각화, 분석, 해석하는 능력을 기르며 빅데이터 시대의 데이터 리터러시를 함양합니다.','사회과학계열, 자연과학계열, 공학계열 학과 전체','경제학자, 대기과학자, 데이터과학자, 보험계리사, 신약개발연구원, 스포츠기록 분석원, 임상의학연구원, 투자분석가 등',[{name:'확률과 통계',type:'필수'}])"><div class="type-tag">융합</div><h4>실용 통계</h4><p>수학 · 4학점</p></div>
+            <div class="card c-math" onclick="openModal('수학과 문화','수학 · 융합 · 4학점','5등급','수학이 미술, 음악, 건축, 철학, 역사 등 다양한 인류 문화 영역과 상호작용하며 발전해 온 과정을 탐구합니다. 수학의 예술적 가치와 인문학적 의미를 폭넓게 이해합니다.','사회과학계열, 자연과학계열, 공학계열 학과 전체','사회, 자연, 과학 전반의 활동 분야',[])"><div class="type-tag">융합</div><h4>수학과 문화</h4><p>수학 · 4학점</p></div>
+            <div class="card c-eng" onclick="openModal('실생활 영어 회화','영어 · 융합 · 4학점','5등급','일상생활, 해외여행, 기초적인 직무 상황 등에서 마주하는 다양한 맥락 속에서 자연스럽고 적절하게 의사소통할 수 있는 실용적인 영어 말하기와 듣기 능력을 기릅니다.','통번역학과, 영문학부, 국제학부, 글로벌커뮤니케이션 영어전공 등','통역가, 번역가, 여행안내원 등',[])"><div class="type-tag">융합</div><h4>실생활 영어 회화</h4><p>영어 · 4학점</p></div>
+            <div class="card c-eng" onclick="openModal('세계 문화와 영어','영어 · 융합 · 4학점','5등급','영어를 학습 도구로 사용하여 세계 여러 나라의 역사, 지리, 문학, 사회 제도를 폭넓게 탐구함으로써, 글로벌 마인드를 기르고 타 문화에 대한 포용적 태도를 함양합니다.','영미문화학과, 영미인문학과, 영어산업학과, 비즈니스 영어학과, 응용영어콘텐츠학과 등','무역 담당자, 여행 안내원, 인문과학연구원, 작가, 호텔 지배인 등',[])"><div class="type-tag">융합</div><h4>세계 문화와 영어</h4><p>영어 · 4학점</p></div>
           </div>
         </div>
  
         <div class="group-box" data-max="3">
           <div class="group-header"><div class="group-title">사회 · 과학</div><span class="group-badge badge-pick3">6과목 중 택3</span></div>
           <div class="cards">
-            <div class="card c-soc" onclick="openModal('윤리문제 탐구','사회 · 융합 · 3학점','5등급_등급X','생명, 정보, 환경, 다문화 등 현대 사회에서 새롭게 등장하는 복잡한 윤리적 쟁점들을 깊이 있게 탐구하고, 토론을 통해 도덕적 가치 판단 능력과 실천적 대안을 모색합니다.',[{name:'현대사회와 윤리',type:'권장'},{name:'윤리와 사상',type:'권장'}])"><div class="type-tag">융합</div><h4>윤리문제 탐구</h4><p>사회 · 3학점</p></div>
-            <div class="card c-soc" onclick="openModal('여행지리','사회 · 융합 · 3학점','5등급_등급X','현대인의 중요한 여가 활동인 여행을 지리적 관점에서 접근합니다. 국내외 주요 여행지의 자연경관, 문화적 매력, 관광 산업 등을 탐구하며 지역의 다양성을 폭넓게 이해합니다.',[{name:'세계시민과 지리',type:'권장'}])"><div class="type-tag">융합</div><h4>여행지리</h4><p>사회 · 3학점</p></div>
-            <div class="card c-soc" onclick="openModal('역사로 탐구하는 현대 세계','사회 · 융합 · 3학점','5등급_등급X','현대 세계의 국제 분쟁, 인권, 환경, 경제 세계화 등의 주요 이슈들을 과거의 역사적 연원과 맥락 속에서 비판적으로 분석하고, 바람직한 세계 시민의 역할을 고찰합니다.',[{name:'세계사',type:'권장'}])"><div class="type-tag">융합</div><h4>역사로 탐구하는 현대 세계</h4><p>사회 · 3학점</p></div>
-            <div class="card c-soc" onclick="openModal('금융과 경제생활','사회 · 융합 · 3학점','5등급_등급X','합리적인 경제생활과 자산 관리를 위해 필수적인 금융 지식, 신용 관리, 저축과 투자, 금융 윤리 등을 실생활 사례를 중심으로 실용적이고 체계적으로 학습합니다.',[{name:'경제',type:'권장'}])"><div class="type-tag">융합</div><h4>금융과 경제생활</h4><p>사회 · 3학점</p></div>
-            <div class="card c-sci" onclick="openModal('과학의 역사와 문화','과학 · 융합 · 3학점','5등급_등급X','고대부터 현대에 이르기까지 과학이 어떻게 발전해 왔으며, 그것이 인류의 사회, 문화, 철학적 세계관에 어떠한 영향을 미쳤는지 융합적으로 조망합니다.',[])"><div class="type-tag">융합</div><h4>과학의 역사와 문화</h4><p>과학 · 3학점</p></div>
-            <div class="card c-sci" onclick="openModal('기후변화와 환경생태','과학 · 융합 · 3학점','5등급_등급X','전 지구적 위기인 기후변화의 과학적 원리를 분석하고, 이것이 생태계와 인류 생존에 미치는 영향을 탐구하여 탄소 중립 등 지속 가능한 환경을 위한 해결 방안을 모색합니다.',[])"><div class="type-tag">융합</div><h4>기후변화와 환경생태</h4><p>과학 · 3학점</p></div>
+            <div class="card c-soc" onclick="openModal('윤리문제 탐구','사회 · 융합 · 3학점','5등급_등급X','생명, 정보, 환경, 다문화 등 현대 사회에서 새롭게 등장하는 복잡한 윤리적 쟁점들을 깊이 있게 탐구하고, 토론을 통해 도덕적 가치 판단 능력과 실천적 대안을 모색합니다.','사회복지학과, 사회학과, 아동청소년학과, 정보사회학과, 문화인류학과, 윤리교육과, 철학과, 정치외교학과 등','사회복지사, 사회단체활동가(시민·인권·환경), 기자, 저널리스트, 중등교사, 대학교수 등',[{name:'현대사회와 윤리',type:'권장'},{name:'윤리와 사상',type:'권장'}])"><div class="type-tag">융합</div><h4>윤리문제 탐구</h4><p>사회 · 3학점</p></div>
+            <div class="card c-soc" onclick="openModal('여행지리','사회 · 융합 · 3학점','5등급_등급X','현대인의 중요한 여가 활동인 여행을 지리적 관점에서 접근합니다. 국내외 주요 여행지의 자연경관, 문화적 매력, 관광 산업 등을 탐구하며 지역의 다양성을 폭넓게 이해합니다.','관광학과, 문화인류학과, 지리학과, 지리교육과, 건축학과, 도시계획학과, 외국어 관련 학과, 부동산학과 등','여행 작가, 관광 통역 안내사, 관광 여행 기획, 해외 시장 정보 분석원, 국제 분쟁 전문가, 증강현실 전문가 등',[{name:'세계시민과 지리',type:'권장'}])"><div class="type-tag">융합</div><h4>여행지리</h4><p>사회 · 3학점</p></div>
+            <div class="card c-soc" onclick="openModal('역사로 탐구하는 현대 세계','사회 · 융합 · 3학점','5등급_등급X','현대 세계의 국제 분쟁, 인권, 환경, 경제 세계화 등의 주요 이슈들을 과거의 역사적 연원과 맥락 속에서 비판적으로 분석하고, 바람직한 세계 시민의 역할을 고찰합니다.','신문방송학과, 정치외교학과, 국제학부, 국제관계학과, 경제학과, 사회학과, 역사학부, 사학과, 서양사학과 등','언론인, 콘텐츠 크리에이터, 외환 딜러 및 무역사무원, 인문·사회과학 연구원, 대학교수, 교사, 공무원 등',[{name:'세계사',type:'권장'}])"><div class="type-tag">융합</div><h4>역사로 탐구하는 현대 세계</h4><p>사회 · 3학점</p></div>
+            <div class="card c-soc" onclick="openModal('금융과 경제생활','사회 · 융합 · 3학점','5등급_등급X','합리적인 경제생활과 자산 관리를 위해 필수적인 금융 지식, 신용 관리, 저축과 투자, 금융 윤리 등을 실생활 사례를 중심으로 실용적이고 체계적으로 학습합니다.','경영학과, 경제학과, 금융경영과, 금융보험학과, 세무학과, 회계학과, 국제통상학과, 금융재무학과, 자산관리학부 등','금융자산운용가, 감정평가사, 증권분석가, 신용조사원, 손해사정사, 세무사, 회계사, 보험계리인, 부동산컨설턴트 등',[{name:'경제',type:'권장'}])"><div class="type-tag">융합</div><h4>금융과 경제생활</h4><p>사회 · 3학점</p></div>
+            <div class="card c-sci" onclick="openModal('과학의 역사와 문화','과학 · 융합 · 3학점','5등급_등급X','고대부터 현대에 이르기까지 과학이 어떻게 발전해 왔으며, 그것이 인류의 사회, 문화, 철학적 세계관에 어떠한 영향을 미쳤는지 융합적으로 조망합니다.','역사학, 문화학, 예술사 관련학과, 과학사·과학철학학과, 사회과학계열, 과학교육학과 등','역사 연구원, 과학사 연구원, 과학 교사, 과학교육 연구원, 과학 저널리스트, 문화 예술 분야 연구원 등',[])"><div class="type-tag">융합</div><h4>과학의 역사와 문화</h4><p>과학 · 3학점</p></div>
+            <div class="card c-sci" onclick="openModal('기후변화와 환경생태','과학 · 융합 · 3학점','5등급_등급X','전 지구적 위기인 기후변화의 과학적 원리를 분석하고, 이것이 생태계와 인류 생존에 미치는 영향을 탐구하여 탄소 중립 등 지속 가능한 환경을 위한 해결 방안을 모색합니다.','지구과학교육과, 과학교육학부, 지구환경과학과, 지구시스템과학과, 대기과학과, 지구해양학과, 에너지자원공학과 등','환경연구원, 환경관리자, 과학교사, 지질연구원, 자연계열교수, 기상연구원, 해양 연구원, 생태학자 등',[])"><div class="type-tag">융합</div><h4>기후변화와 환경생태</h4><p>과학 · 3학점</p></div>
           </div>
         </div>
  
         <div class="group-box" data-max="1">
           <div class="group-header"><div class="group-title">음악 · 미술</div><span class="group-badge badge-pick1">2과목 중 택1 · 2학점</span></div>
           <div class="cards">
-            <div class="card c-art" onclick="openModal('음악 연주와 창작','음악 · 진로 · 2학점','3단계','성악 및 기악 연주 역량을 기르고, 디지털 도구를 활용하거나 직접 선율을 작곡하는 등 심화된 창작 활동을 통해 음악적 표현 능력과 예술적 감수성을 함양합니다.',[])"><div class="type-tag">진로</div><h4>음악 연주와 창작</h4><p>음악 · 2학점</p></div>
-            <div class="card c-art" onclick="openModal('미술과 매체','미술 · 융합 · 2학점','3단계','전통 미술의 경계를 넘어 사진, 영상, 디지털 미디어 등 다양한 매체의 특성을 활용한 미술 창작과 감상 활동을 통해 시각 문화 시대의 미적 소통 능력을 기릅니다.',[])"><div class="type-tag">융합</div><h4>미술과 매체</h4><p>미술 · 2학점</p></div>
+            <div class="card c-art" onclick="openModal('음악 연주와 창작','음악 · 진로 · 2학점','3단계','성악 및 기악 연주 역량을 기르고, 디지털 도구를 활용하거나 직접 선율을 작곡하는 등 심화된 창작 활동을 통해 음악적 표현 능력과 예술적 감수성을 함양합니다.','피아노과, 성악과, 작곡과, 관현악과, 국악과, 음악교육과, 실용음악과, 종교음악과, 반주학과, 뮤지컬학과, 공연제작과 등','음악교사, 전공실기 강사, 방과 후 강사, 연주자, 음악치료사, 실기지도사, 문화예술 교육사, 악기 수리가 등',[])"><div class="type-tag">진로</div><h4>음악 연주와 창작</h4><p>음악 · 2학점</p></div>
+            <div class="card c-art" onclick="openModal('미술과 매체','미술 · 융합 · 2학점','3단계','전통 미술의 경계를 넘어 사진, 영상, 디지털 미디어 등 다양한 매체의 특성을 활용한 미술 창작과 감상 활동을 통해 시각 문화 시대의 미적 소통 능력을 기릅니다.','산업디자인학과, 판화과, 한국화과, 조소과, 금속공예과, 시각디자인학과, 멀티미디어디자인학과, AI디자인학과 등','디지털 아티스트, 일러스트레이터, 미디어 아티스트, 시각디자이너, 영상크리에이터 등',[])"><div class="type-tag">융합</div><h4>미술과 매체</h4><p>미술 · 2학점</p></div>
           </div>
         </div>
  
         <div class="group-box" data-max="1">
           <div class="group-header"><div class="group-title">교양</div><span class="group-badge badge-pick1-purple">2과목 중 택1 · 2학점</span></div>
           <div class="cards">
-            <div class="card c-edu" onclick="openModal('인간과 철학','교양 · 진로 · 2학점','PF','인간 존재의 본질, 앎의 근원, 삶의 궁극적 의미와 가치 등 근본적인 물음에 대해 철학자들의 사유를 바탕으로 깊이 있게 성찰하며 인문학적 통찰력을 기릅니다.',[])"><div class="type-tag">진로</div><h4>인간과 철학</h4><p>교양 · 2학점</p></div>
-            <div class="card c-edu" onclick="openModal('논리와 사고','교양 · 진로 · 2학점','PF','생각을 올바르게 이끌어내는 연역과 귀납 등의 논리적 규칙을 배우고, 오류를 피하며 합리적으로 추론하는 방법을 익혀 모든 학문의 기초가 되는 비판적 사고력을 기릅니다.',[])"><div class="type-tag">진로</div><h4>논리와 사고</h4><p>교양 · 2학점</p></div>
+            <div class="card c-edu" onclick="openModal('인간과 철학','교양 · 진로 · 2학점','PF','인간 존재의 본질, 앎의 근원, 삶의 궁극적 의미와 가치 등 근본적인 물음에 대해 철학자들의 사유를 바탕으로 깊이 있게 성찰하며 인문학적 통찰력을 기릅니다.','윤리교육과, 철학과, 동양철학과, 유학·동양학과, 종교학과, 미학과, 역사철학부, 철학상담학과 등','중등교사, 작가, 기록물관리사, 기자, 소설가, 시인, 시나리오 작가, 평론가 등',[])"><div class="type-tag">진로</div><h4>인간과 철학</h4><p>교양 · 2학점</p></div>
+            <div class="card c-edu" onclick="openModal('논리와 사고','교양 · 진로 · 2학점','PF','생각을 올바르게 이끌어내는 연역과 귀납 등의 논리적 규칙을 배우고, 오류를 피하며 합리적으로 추론하는 방법을 익혀 모든 학문의 기초가 되는 비판적 사고력을 기릅니다.','철학과, 경제학과, 법학과, 수학과, 윤리학과 등','작가, 언론인, 논술지도사, 사회조사분석가, 철학연구원, 대학교수 등',[])"><div class="type-tag">진로</div><h4>논리와 사고</h4><p>교양 · 2학점</p></div>
           </div>
         </div>
       </div>
@@ -384,26 +283,18 @@
         <i class="ti ti-info-circle" style="color:#3C3489;margin-right:6px;font-size:16px;vertical-align:-2px"></i>
         3학년 목표 학점(1학기 28학점, 2학기 26학점 / 총 54학점)을 확인하세요.
       </div>
-      <div class="cart-hint">
-        <i class="ti ti-shopping-cart-plus" style="margin-right:4px"></i> 과목 카드를 누르면 내 수강 장바구니에 담깁니다.<br>담은 과목은 각 학기별 선택과목 영역에 자동 합산됩니다.
-      </div>
+      <div class="cart-hint"><i class="ti ti-shopping-cart-plus" style="margin-right:4px"></i> 과목 카드를 누르면 내 수강 장바구니에 담깁니다.<br>담은 과목은 각 학기별 선택과목 영역에 자동 합산됩니다.</div>
       <div class="selected-list">
         <div class="selected-list-title"><i class="ti ti-checklist" style="font-size:16px"></i> 내 수강 장바구니 (선택과목)</div>
         <div id="selected-list-body" class="selected-list-item">아직 선택한 과목이 없습니다. 과목 탐색 탭에서 추가해보세요.</div>
       </div>
       <div class="calc-grid">
         <div class="calc-item" style="grid-column:1/3"><label>학교 지정과목 (1학기)</label><input type="number" value="13" readonly style="background:#f0f0f0;border:none;color:#66627A"></div>
-        <div class="calc-item" style="background:#EEEDFE;border:1px solid #D9D5FF;grid-column:1/3">
-          <label style="color:#3C3489;font-weight:700">1학기 학생 선택과목 (장바구니 합산)</label>
-          <input type="number" id="cc-opt-1" value="0" readonly style="background:#F6F4FF;border:none;color:#3C3489">
-        </div>
+        <div class="calc-item" style="background:#EEEDFE;border:1px solid #D9D5FF;grid-column:1/3"><label style="color:#3C3489;font-weight:700">1학기 학생 선택과목 (장바구니 합산)</label><input type="number" id="cc-opt-1" value="0" readonly style="background:#F6F4FF;border:none;color:#3C3489"></div>
       </div>
       <div class="calc-grid" style="margin-top:-5px">
         <div class="calc-item" style="grid-column:1/3"><label>학교 지정과목 (2학기)</label><input type="number" value="1" readonly style="background:#f0f0f0;border:none;color:#66627A"></div>
-        <div class="calc-item" style="background:#EEEDFE;border:1px solid #D9D5FF;grid-column:1/3">
-          <label style="color:#3C3489;font-weight:700">2학기 학생 선택과목 (장바구니 합산)</label>
-          <input type="number" id="cc-opt-2" value="0" readonly style="background:#F6F4FF;border:none;color:#3C3489">
-        </div>
+        <div class="calc-item" style="background:#EEEDFE;border:1px solid #D9D5FF;grid-column:1/3"><label style="color:#3C3489;font-weight:700">2학기 학생 선택과목 (장바구니 합산)</label><input type="number" id="cc-opt-2" value="0" readonly style="background:#F6F4FF;border:none;color:#3C3489"></div>
       </div>
       <div class="calc-result">
         <div class="calc-metric"><div class="num" id="cr-total-1">13</div><div class="lbl">1학기 총 학점</div><div id="cr-status-1" style="font-size:12px;margin-top:6px;font-weight:700"></div></div>
@@ -417,6 +308,7 @@
       </div>
     </div>
  
+    <!-- 모달 -->
     <div id="modal" class="modal-wrap">
       <div class="modal">
         <div class="modal-top">
@@ -426,6 +318,7 @@
         <div class="modal-meta" id="modal-meta"></div>
         <div class="modal-desc" id="modal-desc"></div>
         <div id="modal-eval"></div>
+        <div id="modal-career"></div>
         <div id="modal-prereq"></div>
         <button id="cart-btn" class="cart-btn">장바구니에 담기</button>
       </div>
@@ -436,7 +329,7 @@
 <script>
 const evalData={
   '5등급':{bg:'#E6F1FB',tc:'#0C447C',dc:'#378ADD',vc:'#185FA5',title:'성적 처리 방식 (일반/진로 선택)',rows:[{k:'성취도',v:'5단계 (A·B·C·D·E) 표기'},{k:'석차등급',v:'5등급제 산출 (상위 10% 1등급)'},{k:'대입 반영',v:'석차등급이 산출되어 대학 입시에 주요하게 반영됩니다.'}]},
-  '5등급_등급X':{bg:'#E1F5EE',tc:'#085041',dc:'#1D9E75',vc:'#0F6E56',title:'성적 처리 방식 (융합 선택)',rows:[{k:'성취도',v:'5단계 (A·B·C·D·E) 표기 (절대평가)'},{k:'석차등급',v:'산출 없음 (등급 미기재)'},{k:'대입 반영',v:'수강자의 등급 스트레스 완화를 위해 성취도만 제공됩니다.'}]},
+  '5등급_등급X':{bg:'#E1F5EE',tc:'#085041',dc:'#1D9E75',vc:'#0F6E56',title:'성적 처리 방식 (융합 선택)',rows:[{k:'성취도',v:'5단계 (A·B·C·D·E) 표기 (절대평가)'},{k:'석차등급',v:'산출 없음 (등급 미기재)'},{k:'대입 반영',v:'수강자의 등급 부담 완화를 위해 성취도만 제공됩니다.'}]},
   '3단계':{bg:'#FAECE7',tc:'#4A1B0C',dc:'#D85A30',vc:'#993C1D',title:'성적 처리 방식 (체육/예술)',rows:[{k:'성취도',v:'3단계 (A·B·C) 표기'},{k:'석차등급',v:'산출 없음'},{k:'대입 반영',v:'원점수와 과목평균 없이 성취도만 대입 자료로 제공됩니다.'}]},
   'PF':{bg:'#EEEDFE',tc:'#3C3489',dc:'#7F77DD',vc:'#534AB7',title:'성적 처리 방식 (교양)',rows:[{k:'성취도',v:'P(Pass, 이수) / F(Fail, 미이수) 표기'},{k:'석차등급',v:'산출 없음'},{k:'대입 반영',v:'단순 이수 여부(P)만 학교생활기록부에 기재됩니다.'}]}
 };
@@ -457,44 +350,81 @@ function showSem(id,el){
   document.getElementById(id).classList.add('active');
   el.classList.add('active');
 }
-function openModal(title,meta,evalType,desc,prereqs,isDesignated=false){
+ 
+function openModal(title,meta,evalType,desc,dept,job,prereqs,isDesignated=false){
   currentModalTitle=title;
   currentModalIsDesignated=isDesignated;
   document.getElementById('modal-title').textContent=title;
   document.getElementById('modal-meta').innerHTML=meta.split(' · ').map(m=>`<span>${m}</span>`).join('');
   document.getElementById('modal-desc').textContent=desc;
+ 
+  // 평가 정보
   const ev=evalData[evalType];
   if(ev){
     const rowsHtml=ev.rows.map(r=>`<div class="eval-row"><div class="eval-dot" style="background:${ev.dc}"></div><div style="color:${ev.vc}"><span class="eval-key">${r.k} — </span>${r.v}</div></div>`).join('');
     document.getElementById('modal-eval').innerHTML=`<div class="eval-box" style="background:${ev.bg}"><div class="eval-title" style="color:${ev.tc}"><i class="ti ti-clipboard-check" style="font-size:16px;margin-right:4px"></i>${ev.title}</div>${rowsHtml}</div>`;
-  }else{document.getElementById('modal-eval').innerHTML='';}
-  if(prereqs&&prereqs.length>0){
+  } else {
+    document.getElementById('modal-eval').innerHTML='';
+  }
+ 
+  // 관련 학과 및 직업
+  if(dept || job){
+    document.getElementById('modal-career').innerHTML=`
+      <div class="career-box">
+        <div class="career-title"><i class="ti ti-compass" style="font-size:16px"></i>관련 학과 및 직업</div>
+        ${dept ? `<div class="career-row"><span class="career-label career-label-dept">관련 학과</span><span class="career-text">${dept}</span></div>` : ''}
+        ${job ? `<div class="career-row"><span class="career-label career-label-job">관련 직업</span><span class="career-text">${job}</span></div>` : ''}
+      </div>`;
+  } else {
+    document.getElementById('modal-career').innerHTML='';
+  }
+ 
+  // 선이수 과목
+  if(prereqs && prereqs.length>0){
     const itemsHtml=prereqs.map((p,i)=>{
-      const badge=p.type==='필수'?`<span style="background:#FCEBEB;color:#A32D2D;font-size:11px;padding:2px 8px;border-radius:20px;font-weight:700">선이수 필수</span>`:`<span style="background:#FAEEDA;color:#633806;font-size:11px;padding:2px 8px;border-radius:20px;font-weight:700">선이수 권장</span>`;
+      const badge=p.type==='필수'
+        ?`<span style="background:#FCEBEB;color:#A32D2D;font-size:11px;padding:2px 8px;border-radius:20px;font-weight:700">선이수 필수</span>`
+        :`<span style="background:#FAEEDA;color:#633806;font-size:11px;padding:2px 8px;border-radius:20px;font-weight:700">선이수 권장</span>`;
       return `<label class="prereq-item"><input type="checkbox" id="pre_${i}" onchange="updatePrereqStatus()"><div><div class="prereq-item-label">${p.name} ${badge}</div><div class="prereq-item-sub">${p.type==='필수'?'반드시 이수해야 합니다':'이수 후 수강하면 더욱 효과적입니다'}</div></div></label>`;
     }).join('');
     document.getElementById('modal-prereq').innerHTML=`<div class="prereq-box"><div class="prereq-title"><i class="ti ti-checklist" style="font-size:16px;color:#5F5E5A"></i>이러한 과목들을 이수했나요?</div>${itemsHtml}<div id="prereq-status" style="margin-top:12px;font-size:13px;font-weight:600;color:#5F5E5A;text-align:center;padding:8px;border-radius:8px;background:var(--color-background-primary)">체크박스를 눌러 이수 여부를 확인하세요</div></div>`;
-    window._prereqCount=prereqs.length;window._prereqRequired=prereqs.filter(p=>p.type==='필수').length;
-  }else{
+    window._prereqCount=prereqs.length;
+    window._prereqRequired=prereqs.filter(p=>p.type==='필수').length;
+  } else {
     document.getElementById('modal-prereq').innerHTML=`<div class="prereq-box"><div class="prereq-title"><i class="ti ti-checklist" style="font-size:16px;color:#5F5E5A"></i>선이수 과목</div><div class="prereq-none">별도의 선이수 필수·권장 과목이 없습니다. 누구든지 수강할 수 있어요!</div></div>`;
   }
+ 
   const cartBtn=document.getElementById('cart-btn');
-  if(isDesignated){cartBtn.innerHTML='<i class="ti ti-lock"></i> 학교 지정 필수 과목';cartBtn.classList.add('remove');cartBtn.style.pointerEvents='none';cartBtn.onclick=null;}
-  else{cartBtn.style.pointerEvents='auto';updateCartButton();cartBtn.onclick=toggleCart;}
+  if(isDesignated){
+    cartBtn.innerHTML='<i class="ti ti-lock"></i> 학교 지정 필수 과목';
+    cartBtn.classList.add('remove');
+    cartBtn.style.pointerEvents='none';
+    cartBtn.onclick=null;
+  } else {
+    cartBtn.style.pointerEvents='auto';
+    updateCartButton();
+    cartBtn.onclick=toggleCart;
+  }
   document.getElementById('modal').classList.add('open');
 }
+ 
 function updatePrereqStatus(){
-  const total=window._prereqCount||0;const required=window._prereqRequired||0;let checked=0;
+  const total=window._prereqCount||0;
+  const required=window._prereqRequired||0;
+  let checked=0;
   for(let i=0;i<total;i++){const el=document.getElementById('pre_'+i);if(el&&el.checked)checked++;}
   const s=document.getElementById('prereq-status');if(!s)return;
   if(checked===total){s.style.background='#E1F5EE';s.style.color='#085041';s.textContent='모든 선이수 과목을 이수했어요! 수강 준비 완료 🎉';}
   else if(required>0){s.style.background='#FCEBEB';s.style.color='#A32D2D';s.textContent='필수 선이수 과목을 먼저 이수해 주세요.';}
   else{s.style.background='#FAEEDA';s.style.color='#633806';s.textContent='권장 과목 이수 후 수강하면 더욱 효과적입니다.';}
 }
+ 
 function closeModal(){document.getElementById('modal').classList.remove('open');}
+ 
 function toggleCart(){
-  if(selectedSubjectsMap.has(currentModalTitle)){selectedSubjectsMap.delete(currentModalTitle);}
-  else{
+  if(selectedSubjectsMap.has(currentModalTitle)){
+    selectedSubjectsMap.delete(currentModalTitle);
+  } else {
     let credit=0,semester=1;
     document.querySelectorAll('.card').forEach(card=>{
       if(card.querySelector('h4').textContent===currentModalTitle){
@@ -507,22 +437,32 @@ function toggleCart(){
   }
   updateCartButton();updateCartUI();closeModal();
 }
+ 
 function updateCartButton(){
   const btn=document.getElementById('cart-btn');
-  if(selectedSubjectsMap.has(currentModalTitle)){btn.innerHTML='<i class="ti ti-trash"></i> 장바구니에서 빼기';btn.classList.add('remove');}
-  else{btn.innerHTML='<i class="ti ti-shopping-cart-plus"></i> 장바구니에 담기';btn.classList.remove('remove');}
+  if(selectedSubjectsMap.has(currentModalTitle)){
+    btn.innerHTML='<i class="ti ti-trash"></i> 장바구니에서 빼기';btn.classList.add('remove');
+  } else {
+    btn.innerHTML='<i class="ti ti-shopping-cart-plus"></i> 장바구니에 담기';btn.classList.remove('remove');
+  }
 }
+ 
 function updateCartUI(){
   const list=document.getElementById('selected-list-body');
-  if(selectedSubjectsMap.size===0){list.innerHTML='아직 선택한 과목이 없습니다. 과목 탐색 탭에서 추가해보세요.';document.getElementById('cc-opt-1').value=0;document.getElementById('cc-opt-2').value=0;}
-  else{
+  if(selectedSubjectsMap.size===0){
+    list.innerHTML='아직 선택한 과목이 없습니다. 과목 탐색 탭에서 추가해보세요.';
+    document.getElementById('cc-opt-1').value=0;
+    document.getElementById('cc-opt-2').value=0;
+  } else {
     let html='',total1=0,total2=0;
     selectedSubjectsMap.forEach((info,title)=>{
       const ts=info.semester===1?'[1학기]':'[2학기]';
       html+=`<div class="selected-list-item"><i class="ti ti-book" style="margin-right:4px"></i> ${ts} ${title} <span style="color:#3C3489;font-weight:700">(${info.credit}학점)</span></div>`;
       if(info.semester===1)total1+=info.credit;else total2+=info.credit;
     });
-    list.innerHTML=html;document.getElementById('cc-opt-1').value=total1;document.getElementById('cc-opt-2').value=total2;
+    list.innerHTML=html;
+    document.getElementById('cc-opt-1').value=total1;
+    document.getElementById('cc-opt-2').value=total2;
   }
   document.querySelectorAll('.card').forEach(card=>{
     const title=card.querySelector('h4').textContent;
@@ -533,10 +473,14 @@ function updateCartUI(){
     const max=parseInt(box.getAttribute('data-max'),10);if(!max)return;
     const cards=box.querySelectorAll('.card');let sel=0;
     cards.forEach(c=>{if(c.classList.contains('selected-subject-card'))sel++;});
-    cards.forEach(c=>{if(sel>=max&&!c.classList.contains('selected-subject-card'))c.classList.add('disabled-subject-card');else c.classList.remove('disabled-subject-card');});
+    cards.forEach(c=>{
+      if(sel>=max&&!c.classList.contains('selected-subject-card'))c.classList.add('disabled-subject-card');
+      else c.classList.remove('disabled-subject-card');
+    });
   });
   calcAll();
 }
+ 
 function calcAll(){
   const req1=13,req2=1;
   const opt1=parseInt(document.getElementById('cc-opt-1').value)||0;
@@ -546,13 +490,19 @@ function calcAll(){
   document.getElementById('cr-total-2').textContent=t2;
   document.getElementById('cr-total-grand').textContent=grand;
   const s1=document.getElementById('cr-status-1'),s2=document.getElementById('cr-status-2');
-  if(t1===28){s1.textContent=`충족 (28/28)`;s1.style.color='#1D9E75';}else if(t1>28){s1.textContent=`초과 (${t1}/28)`;s1.style.color='#E24B4A';}else{s1.textContent=`미달 (${t1}/28)`;s1.style.color='#E24B4A';}
-  if(t2===26){s2.textContent=`충족 (26/26)`;s2.style.color='#1D9E75';}else if(t2>26){s2.textContent=`초과 (${t2}/26)`;s2.style.color='#E24B4A';}else{s2.textContent=`미달 (${t2}/26)`;s2.style.color='#E24B4A';}
+  if(t1===28){s1.textContent=`충족 (28/28)`;s1.style.color='#1D9E75';}
+  else if(t1>28){s1.textContent=`초과 (${t1}/28)`;s1.style.color='#E24B4A';}
+  else{s1.textContent=`미달 (${t1}/28)`;s1.style.color='#E24B4A';}
+  if(t2===26){s2.textContent=`충족 (26/26)`;s2.style.color='#1D9E75';}
+  else if(t2>26){s2.textContent=`초과 (${t2}/26)`;s2.style.color='#E24B4A';}
+  else{s2.textContent=`미달 (${t2}/26)`;s2.style.color='#E24B4A';}
   const pct=Math.min(100,Math.round(grand/54*100));
   document.getElementById('cr-pct').textContent=pct+'%';
   document.getElementById('cr-bar').style.width=pct+'%';
 }
+ 
 window.onload=function(){calcAll();};
 </script>
 </body>
 </html>
+ 
