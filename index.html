@@ -110,6 +110,12 @@ box-shadow:0 4px 14px rgba(60,52,137,.06);position:relative;}
   font-size:10px;
   font-weight:700;
 }
+
+.disabled-subject-card{
+  opacity:.35;
+  pointer-events:none;
+  filter:grayscale(.2);
+}
 .selected-list{
   background:var(--color-background-secondary);
   border-radius:var(--border-radius-md);
@@ -538,6 +544,36 @@ function updateAutoCredits(){
   calcAll();
 }
 
+function refreshDisabledCards(){
+
+  document.querySelectorAll('.card').forEach(card=>{
+    card.classList.remove('disabled-subject-card');
+  });
+
+  groupRules.forEach(rule=>{
+
+    const cards = Array.from(document.querySelectorAll(rule.selector));
+
+    const selectedCards = cards.filter(card=>
+      card.classList.contains('selected-subject-card')
+    );
+
+    if(selectedCards.length >= rule.max){
+
+      cards.forEach(card=>{
+
+        if(!card.classList.contains('selected-subject-card')){
+          card.classList.add('disabled-subject-card');
+        }
+
+      });
+
+    }
+
+  });
+
+}
+
 document.addEventListener('click', function(e){
   const card = e.target.closest('.card');
   if(!card) return;
@@ -553,6 +589,8 @@ document.addEventListener('click', function(e){
     selectedSubjectsMap.delete(title);
     card.classList.remove('selected-subject-card');
     updateAutoCredits();
+    refreshDisabledCards();
+    
     return;
   }
 
@@ -567,14 +605,13 @@ document.addEventListener('click', function(e){
   card.classList.add('selected-subject-card');
 
   updateAutoCredits();
+  refreshDisabledCards();
 }, true);
 
-window.addEventListener('DOMContentLoaded', updateAutoCredits);
-document.getElementById('modal').addEventListener('click', function(e){
-  if(e.target.id === 'modal'){
-    closeModal();
-  }
-});  
+window.addEventListener('DOMContentLoaded', ()=>{
+  updateAutoCredits();
+  refreshDisabledCards();
+});
 </script>
 </body>
 </html>
