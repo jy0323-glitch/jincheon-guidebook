@@ -503,9 +503,21 @@ function getCreditFromCard(card){
   return m ? parseInt(m[1], 10) : 0;
 }
 
-function getTitleFromCard(card){
+function getCardKey(card){
+
   const h4 = card.querySelector('h4');
-  return h4 ? h4.textContent.trim() : '';
+
+  if(!h4) return '';
+
+  const title = h4.textContent.trim();
+
+  const sem = card.closest('#s1')
+    ? 's1'
+    : card.closest('#s2')
+      ? 's2'
+      : '';
+
+  return `${sem}-${title}`;
 }
 
 function getGroupRule(card){
@@ -584,7 +596,7 @@ document.addEventListener('click', function(e){
   const rule = getGroupRule(card);
   if(!rule) return;
 
-  const title = getTitleFromCard(card);
+  const title = getCardKey(card);
   const credit = getCreditFromCard(card);
   if(!title || !credit) return;
 
@@ -604,7 +616,10 @@ document.addEventListener('click', function(e){
     return;
   }
 
-  selectedSubjectsMap.set(title, {title, credit});
+  selectedSubjectsMap.set(title, {
+  title: card.querySelector('h4').textContent.trim(),
+  credit
+});
   card.classList.add('selected-subject-card');
 
   updateAutoCredits();
