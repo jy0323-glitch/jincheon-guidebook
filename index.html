@@ -390,9 +390,7 @@ function showSem(id,el){
 }
 
 function openModal(title, meta, evalType, desc, prereqs){
-  const clickedCard = event.currentTarget;
-currentModalCard = clickedCard;
-  
+
   document.getElementById('modal-title').textContent = title;
   document.getElementById('modal-meta').innerHTML = meta
   .split(' · ')
@@ -460,6 +458,19 @@ if(selectedSubjectsMap.has(key)){
 }else{
   cartBtn.textContent = '장바구니에 담기';
   cartBtn.classList.remove('remove');
+}
+const cartBtn = document.getElementById('cart-btn');
+
+if(currentModalCard && cartBtn){
+  const key = getCardKey(currentModalCard);
+
+  if(selectedSubjectsMap.has(key)){
+    cartBtn.textContent = '장바구니에서 빼기';
+    cartBtn.classList.add('remove');
+  }else{
+    cartBtn.textContent = '장바구니에 담기';
+    cartBtn.classList.remove('remove');
+  }
 }
   document.getElementById('modal').classList.add('open');
 }
@@ -555,7 +566,13 @@ const groupRules = [
 ];
 
 const selectedSubjectsMap = new Map();
-  let currentModalCard = null;
+let currentModalCard = null;
+
+document.querySelectorAll('.cards .card').forEach(card=>{
+  card.addEventListener('click', function(){
+    currentModalCard = this;
+  }, true);
+});
 
 function getCreditFromCard(card){
   const p = card.querySelector('p');
