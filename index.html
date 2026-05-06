@@ -462,6 +462,7 @@ if(currentModalCard && cartBtn){
     cartBtn.classList.remove('remove');
   }
 }
+  updateCartButton();
   document.getElementById('modal').classList.add('open');
 }
 
@@ -554,15 +555,15 @@ const groupRules = [
     max: 1
   }
 ];
-
 const selectedSubjectsMap = new Map();
 let currentModalCard = null;
 
-document.querySelectorAll('.cards .card').forEach(card=>{
-  card.addEventListener('click', function(){
-    currentModalCard = this;
-  }, true);
-});
+document.addEventListener('click', function(e){
+  const card = e.target.closest('.cards .card');
+  if(card){
+    currentModalCard = card;
+  }
+}, true);
 
 function getCreditFromCard(card){
   const p = card.querySelector('p');
@@ -572,18 +573,11 @@ function getCreditFromCard(card){
 }
 
 function getCardKey(card){
-
   const h4 = card.querySelector('h4');
-
   if(!h4) return '';
 
   const title = h4.textContent.trim();
-
-  const sem = card.closest('#s1')
-    ? 's1'
-    : card.closest('#s2')
-      ? 's2'
-      : '';
+  const sem = card.closest('#s1') ? 's1' : card.closest('#s2') ? 's2' : '';
 
   return `${sem}-${title}`;
 }
@@ -628,44 +622,45 @@ function updateAutoCredits(){
 }
 
 function refreshDisabledCards(){
-
   document.querySelectorAll('.card').forEach(card=>{
     card.classList.remove('disabled-subject-card');
   });
 
   groupRules.forEach(rule=>{
-
     const cards = Array.from(document.querySelectorAll(rule.selector));
-
-    const selectedCards = cards.filter(card=>
+    const selectedCards = cards.filter(card =>
       card.classList.contains('selected-subject-card')
     );
 
     if(selectedCards.length >= rule.max){
-
       cards.forEach(card=>{
-
         if(!card.classList.contains('selected-subject-card')){
           card.classList.add('disabled-subject-card');
         }
-
       });
-
     }
-
   });
-
 }
-window.addEventListener('DOMContentLoaded', ()=>{
-  updateAutoCredits();
-  refreshDisabledCards();
-});
-  document.getElementById('cart-btn').addEventListener('click', ()=>{
 
+function updateCartButton(){
+  const cartBtn = document.getElementById('cart-btn');
+  if(!cartBtn || !currentModalCard) return;
+
+  const key = getCardKey(currentModalCard);
+
+  if(selectedSubjectsMap.has(key)){
+    cartBtn.textContent = '장바구니에서 빼기';
+    cartBtn.classList.add('remove');
+  }else{
+    cartBtn.textContent = '장바구니에 담기';
+    cartBtn.classList.remove('remove');
+  }
+}
+
+document.getElementById('cart-btn').addEventListener('click', function(){
   if(!currentModalCard) return;
 
   const card = currentModalCard;
-
   const rule = getGroupRule(card);
   if(!rule) return;
 
@@ -673,12 +668,9 @@ window.addEventListener('DOMContentLoaded', ()=>{
   const credit = getCreditFromCard(card);
 
   if(selectedSubjectsMap.has(key)){
-
     selectedSubjectsMap.delete(key);
     card.classList.remove('selected-subject-card');
-
   }else{
-
     const selectedCount = getSelectedCountInGroup(rule);
 
     if(selectedCount >= rule.max){
@@ -686,7 +678,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
       return;
     }
 
-    selectedSubjectsMap.set(key,{
+    selectedSubjectsMap.set(key, {
       title: card.querySelector('h4').textContent.trim(),
       credit
     });
@@ -696,7 +688,19 @@ window.addEventListener('DOMContentLoaded', ()=>{
 
   updateAutoCredits();
   refreshDisabledCards();
+  updateCartButton();
   closeModal();
+});
+
+document.getElementById('modal').addEventListener('click', function(e){
+  if(e.target.id === 'modal'){
+    closeModal();
+  }
+});
+
+window.addEventListener('DOMContentLoaded', ()=>{
+  updateAutoCredits();
+  refreshDisabledCards();
 });
 </script>
 </body>
