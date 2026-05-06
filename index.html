@@ -42,7 +42,7 @@
 .c-art{background:#FBEAF0;border-color:#ED93B1}.c-art h4{color:#4B1528}.c-art p{color:#993556}.c-art .type-tag{background:#F4C0D1;color:#4B1528}
 .c-edu{background:#E6F1FB;border-color:#378ADD}.c-edu h4{color:#042C53}.c-edu p{color:#185FA5}.c-edu .type-tag{background:#B5D4F4;color:#042C53}
 .divider{height:0.5px;background:var(--color-border-tertiary);margin:1.25rem 0}
-.modal-wrap{display:none;position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.45);z-index:20;align-items:flex-start;justify-content:center;padding-top:1.5rem}
+.modal-wrap{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.45);z-index:20;align-items:flex-start;justify-content:center;padding-top:1.5rem}
 .modal-wrap.open{display:flex}
 .modal{background:var(--color-background-primary);border-radius:var(--border-radius-lg);border:0.5px solid var(--color-border-secondary);padding:1.25rem;width:100%;max-width:420px;max-height:85vh;overflow-y:auto}
 .modal-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:0.5rem}
@@ -496,4 +496,5 @@ document.addEventListener('click', function(e){
 }, true);
 
 window.addEventListener('DOMContentLoaded', updateAutoCredits);
+  
 </script>
