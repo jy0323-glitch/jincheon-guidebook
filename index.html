@@ -158,6 +158,28 @@ box-shadow:0 4px 14px rgba(60,52,137,.06);position:relative;}
   line-height:1.6;
   font-weight:600;
 }
+  .cart-btn{
+  width:100%;
+  margin-top:1rem;
+  border:none;
+  border-radius:16px;
+
+  background:#3C3489;
+  color:#fff;
+
+  padding:14px;
+  font-size:14px;
+  font-weight:700;
+
+  cursor:pointer;
+
+  box-shadow:0 6px 18px rgba(60,52,137,.18);
+}
+
+.cart-btn.remove{
+  background:#E9E7FF;
+  color:#2D2470;
+}
 </style>
 </head>
 <body>
@@ -340,6 +362,7 @@ box-shadow:0 4px 14px rgba(60,52,137,.06);position:relative;}
     <div class="modal-desc" id="modal-desc"></div>
     <div id="modal-eval"></div>
     <div id="modal-prereq"></div>
+    <button id="cart-btn" class="cart-btn"></button>
   </div>
 </div>
 </div>
@@ -367,6 +390,8 @@ function showSem(id,el){
 }
 
 function openModal(title, meta, evalType, desc, prereqs){
+  const clickedCard = event.currentTarget;
+currentModalCard = clickedCard;
   
   document.getElementById('modal-title').textContent = title;
   document.getElementById('modal-meta').innerHTML = meta
@@ -426,6 +451,16 @@ function openModal(title, meta, evalType, desc, prereqs){
         <div class="prereq-none">별도의 선이수 필수·권장 과목이 없습니다. 누구든지 수강할 수 있어요!</div>
       </div>`;
   }
+  const key = getCardKey(clickedCard);
+const cartBtn = document.getElementById('cart-btn');
+
+if(selectedSubjectsMap.has(key)){
+  cartBtn.textContent = '장바구니에서 제거';
+  cartBtn.classList.add('remove');
+}else{
+  cartBtn.textContent = '장바구니에 담기';
+  cartBtn.classList.remove('remove');
+}
   document.getElementById('modal').classList.add('open');
 }
 
@@ -520,6 +555,7 @@ const groupRules = [
 ];
 
 const selectedSubjectsMap = new Map();
+  let currentModalCard = null;
 
 function getCreditFromCard(card){
   const p = card.querySelector('p');
@@ -613,47 +649,47 @@ function refreshDisabledCards(){
   });
 
 }
+window.addEventListener('DOMContentLoaded', ()=>{
+  updateAutoCredits();
+  refreshDisabledCards();
+});
+  document.getElementById('cart-btn').addEventListener('click', ()=>{
 
-document.addEventListener('click', function(e){
-  const card = e.target.closest('.cards .card');
-  if(!card) return;
+  if(!currentModalCard) return;
+
+  const card = currentModalCard;
 
   const rule = getGroupRule(card);
   if(!rule) return;
 
-  const title = getCardKey(card);
+  const key = getCardKey(card);
   const credit = getCreditFromCard(card);
-  if(!title || !credit) return;
 
-  if(selectedSubjectsMap.has(title)){
-    selectedSubjectsMap.delete(title);
+  if(selectedSubjectsMap.has(key)){
+
+    selectedSubjectsMap.delete(key);
     card.classList.remove('selected-subject-card');
-    updateAutoCredits();
-    refreshDisabledCards();
-    
-    return;
+
+  }else{
+
+    const selectedCount = getSelectedCountInGroup(rule);
+
+    if(selectedCount >= rule.max){
+      alert(`${rule.name} 영역은 최대 ${rule.max}과목만 선택할 수 있습니다.`);
+      return;
+    }
+
+    selectedSubjectsMap.set(key,{
+      title: card.querySelector('h4').textContent.trim(),
+      credit
+    });
+
+    card.classList.add('selected-subject-card');
   }
-
-  const selectedCount = getSelectedCountInGroup(rule);
-
-  if(selectedCount >= rule.max){
-    alert(`${rule.name} 영역은 최대 ${rule.max}과목만 선택할 수 있습니다.`);
-    return;
-  }
-
-  selectedSubjectsMap.set(title, {
-  title: card.querySelector('h4').textContent.trim(),
-  credit
-});
-  card.classList.add('selected-subject-card');
 
   updateAutoCredits();
   refreshDisabledCards();
-}, true);
-
-window.addEventListener('DOMContentLoaded', ()=>{
-  updateAutoCredits();
-  refreshDisabledCards();
+  closeModal();
 });
 </script>
 </body>
